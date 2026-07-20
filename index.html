@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دليل المباني للاستشارات الهندسية | Daleel Al-Mabani Engineering Consultancy</title>
+    <meta
+      name="description"
+      content="دليل المباني للاستشارات الهندسية تقدم استشارات سلامة وتصاميم معتمدة وتقارير فنية وترخيصات وفق الكود السعودي."
+    />
+    <meta property="og:title" content="دليل المباني للاستشارات الهندسية" />
+    <meta property="og:description" content="شريكك الهندسي للمشاريع المعقدة من الدراسة الأولى حتى الاعتماد النهائي." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" />
+    <link rel="icon" href="logo.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Loading screen -->
+    <div class="loading-screen" aria-hidden="true">
+      <div class="loader-seal">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"></circle></svg>
+        <i class="bi bi-compass"></i>
+      </div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__contact">
+          <a href="tel:+966112345678"><i class="bi bi-telephone"></i> +966 11 234 5678</a>
+          <a href="mailto:info@darelbenaa.com"><i class="bi bi-envelope"></i> info@darelbenaa.com</a>
+          <span class="topbar__location"><i class="bi bi-geo-alt"></i> <span data-i18n="topbar.location">الرياض، المملكة العربية السعودية</span></span>
+        </div>
+        <div class="topbar__actions">
+          <div class="topbar__social">
+            <a href="https://wa.me/966112345678" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          </div>
+          <button class="lang-switch" data-lang-toggle aria-label="Switch language">
+            <i class="bi bi-globe2"></i>
+            <span>EN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header" id="top">
+      <div class="container header__inner">
+        <a href="#home" class="brand" aria-label="دليل المباني للاستشارات الهندسية">
+          <img src="logo.jpeg" alt="شعار دليل المباني للاستشارات الهندسية" />
+          <div>
+            <strong data-i18n="brandName">دليل المباني</strong>
+            <span data-i18n="brandTag">الاستشارات الهندسية</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="القائمة الرئيسية">
+          <a href="#home" class="active" data-i18n="nav.home">الرئيسية</a>
+          <a href="#about" data-i18n="nav.about">من نحن</a>
+          <div class="nav-dropdown">
+            <a href="#services" data-i18n="nav.services">خدماتنا <i class="bi bi-chevron-down"></i></a>
+            <div class="nav-dropdown__panel">
+              <a href="#services" data-service="1" data-i18n="services.s1Title">الاستشارات الهندسية للسلامة</a>
+              <a href="#services" data-service="2" data-i18n="services.s2Title">التصميم الهندسي</a>
+              <a href="#services" data-service="3" data-i18n="services.s3Title">التقارير الفنية</a>
+              <a href="#services" data-service="4" data-i18n="services.s4Title">التراخيص والاعتمادات</a>
+              <a href="#services" data-service="5" data-i18n="services.s5Title">الإشراف والاستلام</a>
+            </div>
+          </div>
+          <a href="#process" data-i18n="nav.process">منهجيتنا</a>
+          <a href="#projects" data-i18n="nav.projects">مشاريعنا</a>
+          <a href="#clients" data-i18n="nav.clients">عملاؤنا</a>
+          <a href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+        </nav>
+
+        <a href="#contact" class="btn btn-primary header-cta" data-i18n="nav.cta">اطلب استشارة</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <!-- HERO -->
+      <section class="hero section">
+        <div class="hero__blueprint" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--one"></div>
+        <div class="hero__glow hero__glow--two"></div>
+        <div class="container hero__grid">
+          <div class="hero__content reveal-seq">
+            <span class="eyebrow"><i class="bi bi-patch-check-fill"></i> <span data-i18n="hero.eyebrow">استشارات هندسية معتمدة</span></span>
+            <h1 data-i18n="hero.title">نصمم الحلول التي يراها الآخرون مستحيلة.</h1>
+            <p data-i18n="hero.description">
+              في دليل المباني نساعد المطورين والمستثمرين والجهات الحكومية على تحويل التحديات الهندسية إلى حلول عملية ومعتمدة، وفق أعلى المعايير السعودية.
+            </p>
+            <div class="hero__actions">
+              <a href="#contact" class="btn btn-primary btn-lg" data-i18n="hero.primaryBtn">احصل على استشارة</a>
+              <a href="#services" class="btn btn-secondary btn-lg" data-i18n="hero.secondaryBtn">استكشف خدماتنا</a>
+            </div>
+            <ul class="hero__highlights">
+              <li><i class="bi bi-shield-check"></i><span data-i18n="hero.highlight1">اعتمادات الدفاع المدني</span></li>
+              <li><i class="bi bi-diagram-3"></i><span data-i18n="hero.highlight2">تصاميم احترافية</span></li>
+              <li><i class="bi bi-stars"></i><span data-i18n="hero.highlight3">خبرة متراكمة لأكثر من 21 عاماً</span></li>
+            </ul>
+          </div>
+          <div class="hero__visual reveal-seq">
+            <div class="hero-card hero-card--main">
+              <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85" alt="مشروع هندسي حديث" />
+              <div class="hero-card__overlay">
+                <h3 data-i18n="hero.cardTitle">من الدراسة إلى الاعتماد</h3>
+                <p data-i18n="hero.cardText">تخطيط شامل، مراجعات فنية، وشراكة مستمرة حتى التسليم.</p>
+              </div>
+            </div>
+
+            <div class="hero-seal" aria-hidden="true">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <path id="sealCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+                </defs>
+                <circle class="hero-seal__ring" cx="100" cy="100" r="92" />
+                <circle class="hero-seal__ring hero-seal__ring--inner" cx="100" cy="100" r="66" />
+                <text class="hero-seal__text">
+                  <textPath href="#sealCircle" startOffset="0%">دليل المباني ✦ استشارات هندسية ✦ معتمد ✦ </textPath>
+                </text>
+                <g class="hero-seal__mark">
+                  <i></i>
+                </g>
+              </svg>
+              <div class="hero-seal__icon"><i class="bi bi-award-fill"></i></div>
+            </div>
+
+            <div class="hero-card hero-card--floating">
+              <div class="mini-stat">
+                <strong data-count="98">0</strong><span>%</span>
+                <span class="mini-stat__label" data-i18n="hero.statLabel">رضا العملاء</span>
+              </div>
+              <div class="mini-stat">
+                <strong data-count="500">0</strong><span>+</span>
+                <span class="mini-stat__label" data-i18n="hero.statLabel2">مشروع منجز</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="hero__scroll-cue" aria-hidden="true">
+          <span data-i18n="hero.scrollHint">مرر للاستكشاف</span>
+          <i class="bi bi-arrow-down"></i>
+        </a>
+      </section>
+
+      <!-- LOGO / CLIENT MARQUEE STRIP -->
+      <section class="trust-strip">
+        <div class="container trust-strip__inner reveal">
+          <span data-i18n="trust.label">موثوق من قبل جهات ومطورين رائدين</span>
+          <div class="trust-strip__marquee">
+            <div class="trust-strip__track">
+              <span>Saudi Engineers</span><span>Defense Civil</span><span>Municipal Authorities</span><span>Vision 2030</span><span>Partner Co.</span>
+              <span>Saudi Engineers</span><span>Defense Civil</span><span>Municipal Authorities</span><span>Vision 2030</span><span>Partner Co.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="about section" id="about">
+        <div class="container about__grid">
+          <div class="about__visual reveal">
+            <div class="about__visual-main">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" alt="فريق هندسي" />
+            </div>
+            <div class="about__visual-sub">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=85" alt="اجتماع فريق العمل" />
+            </div>
+            <div class="about__badge">
+              <strong>21+</strong>
+              <span data-i18n="stats.years">سنوات خبرة</span>
+            </div>
+          </div>
+          <div class="about__content reveal">
+            <span class="eyebrow"><i class="bi bi-buildings"></i> <span data-i18n="about.eyebrow">من نحن</span></span>
+            <h2 data-i18n="about.title">شريكك الهندسي لتحقيق مشاريع أكثر أماناً وكفاءة.</h2>
+            <p data-i18n="about.p1">
+              نحن مكتب هندسي متخصص في تقديم الاستشارات الهندسية للسلامة، التصميم المعماري والإنشائي، والتراخيص والاعتمادات وفق أعلى المعايير والمواصفات.
+            </p>
+            <p data-i18n="about.p2">
+              يمتد عملنا من التحليل الأولي إلى الإشراف على التنفيذ والتصديق النهائي، مع تركيزنا على الجودة والابتكار والالتزام باللوائح السعودية.
+            </p>
+            <div class="about__pillars">
+              <div class="pillar-card">
+                <i class="bi bi-lightning-charge"></i>
+                <div>
+                  <h3 data-i18n="about.pillar1Title">حلول مبتكرة</h3>
+                  <p data-i18n="about.pillar1Text">أساليب عملية تنسجم مع طبيعة كل مشروع.</p>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <i class="bi bi-people"></i>
+                <div>
+                  <h3 data-i18n="about.pillar2Title">فريق متخصص</h3>
+                  <p data-i18n="about.pillar2Text">أكثر من 15 مهندساً واستشارياً في مختلف التخصصات.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES / WHY CHOOSE US -->
+      <section class="features section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-gem"></i> <span data-i18n="features.eyebrow">لماذا يختارنا العملاء؟</span></span>
+            <h2 data-i18n="features.title">لأننا لا نقدم استشارات فقط… بل نقدم حلولاً هندسية تصنع الفارق.</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <i class="bi bi-cpu"></i>
+              <h3 data-i18n="features.item1Title">مشاريع معقدة</h3>
+              <p data-i18n="features.item1Text">عند تعقيد الحلول، نرتقي بها إلى معادلة عملية وآمنة.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-stars"></i>
+              <h3 data-i18n="features.item2Title">حلول مبتكرة</h3>
+              <p data-i18n="features.item2Text">نحو تصميمات ذكية تتجاوز التوقعات وتحقق الاستدامة.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-person-badge"></i>
+              <h3 data-i18n="features.item3Title">فريق خبير</h3>
+              <p data-i18n="features.item3Text">خبرة ميدانية عميقة في المشاريع السكنية والتجارية والقطاع العام.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-file-earmark-check"></i>
+              <h3 data-i18n="features.item4Title">اعتمادات كاملة</h3>
+              <p data-i18n="features.item4Text">نحن نتابع إجراءات الاعتماد مع الجهات المختصة وتقديم كل الوثائق المطلوبة.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-fire"></i>
+              <h3 data-i18n="features.item5Title">سلامة ووقاية</h3>
+              <p data-i18n="features.item5Text">تخطيط أنظمة إنذار ومكافحة حريق متوافق مع الكود السعودي.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-rulers"></i>
+              <h3 data-i18n="features.item6Title">التزام بالاشتراطات</h3>
+              <p data-i18n="features.item6Text">مراجعة دقيقة ومطابقة صارمة لكل متطلبات الجهات المعنية.</p>
+            </article>
+            <article class="feature-card reveal">
+              <i class="bi bi-hand-thumbs-up"></i>
+              <h3 data-i18n="features.item7Title">شريك حتى التسليم</h3>
+              <p data-i18n="features.item7Text">نرافق المشروع من الإشراف الأولي إلى شهادة الاستلام النهائية.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="services section" id="services">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-clipboard-check"></i> <span data-i18n="services.eyebrow">خدماتنا</span></span>
+            <h2 data-i18n="services.title">حلول شاملة لأي مشروع يحتاج إلى دقة واحترافية.</h2>
+          </div>
+          <div class="services-grid">
+
+            <article class="service-sheet reveal" data-sheet="1">
+              <div class="service-sheet__head">
+                <span class="service-sheet__num">01</span>
+                <div class="service-icon"><i class="bi bi-shield-lock"></i></div>
+              </div>
+              <h3 data-i18n="services.s1Title">الاستشارات الهندسية للسلامة</h3>
+              <p data-i18n="services.s1Text">استشارات وقائية، تقييم مخاطر، ومراجعات تصاميم معتمدة وفق الكود السعودي.</p>
+              <button class="service-sheet__toggle" type="button" aria-expanded="false">
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <ul class="service-sheet__list">
+                <li data-i18n="services.s1List1">استشارات السلامة والوقاية من الحريق</li>
+                <li data-i18n="services.s1List2">دراسة اشتراطات الكود السعودي</li>
+                <li data-i18n="services.s1List3">تقييم مخاطر المنشآت</li>
+                <li data-i18n="services.s1List4">إعداد حلول السلامة للمشاريع</li>
+                <li data-i18n="services.s1List5">مراجعة واعتماد تصاميم السلامة</li>
+              </ul>
+            </article>
+
+            <article class="service-sheet reveal" data-sheet="2">
+              <div class="service-sheet__head">
+                <span class="service-sheet__num">02</span>
+                <div class="service-icon"><i class="bi bi-building"></i></div>
+              </div>
+              <h3 data-i18n="services.s2Title">التصميم الهندسي</h3>
+              <p data-i18n="services.s2Text">تصميم مخططات السلامة، أنظمة إنذار ومكافحة الحريق، ومخططات ميكانيكية متكاملة.</p>
+              <button class="service-sheet__toggle" type="button" aria-expanded="false">
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <ul class="service-sheet__list">
+                <li data-i18n="services.s2List1">تصميم مخططات السلامة</li>
+                <li data-i18n="services.s2List2">تصميم أنظمة إنذار الحريق</li>
+                <li data-i18n="services.s2List3">تصميم أنظمة مكافحة الحريق</li>
+                <li data-i18n="services.s2List4">تصميم شبكات الإطفاء</li>
+                <li data-i18n="services.s2List5">تصميم المخططات الميكانيكية</li>
+                <li data-i18n="services.s2List6">إعداد مخططات الإخلاء والطوارئ</li>
+                <li data-i18n="services.s2List7">تحديث وتعديل المخططات القائمة</li>
+                <li data-i18n="services.s2List8">التصميم المعماري والإنشائي للمشاريع</li>
+              </ul>
+            </article>
+
+            <article class="service-sheet reveal" data-sheet="3">
+              <div class="service-sheet__head">
+                <span class="service-sheet__num">03</span>
+                <div class="service-icon"><i class="bi bi-file-earmark-medical"></i></div>
+              </div>
+              <h3 data-i18n="services.s3Title">التقارير الفنية</h3>
+              <p data-i18n="services.s3Text">تقارير كشف على المنشآت، تقارير مطابقة اشتراطات السلامة، وتقييم المخاطر.</p>
+              <button class="service-sheet__toggle" type="button" aria-expanded="false">
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <ul class="service-sheet__list">
+                <li data-i18n="services.s3List1">إصدار التقارير الفنية المعتمدة</li>
+                <li data-i18n="services.s3List2">تقارير الكشف على المنشآت</li>
+                <li data-i18n="services.s3List3">تقارير سلامة المباني</li>
+                <li data-i18n="services.s3List4">تقارير سلامة التمديدات الكهربائية</li>
+                <li data-i18n="services.s3List5">تقارير مطابقة اشتراطات السلامة</li>
+                <li data-i18n="services.s3List6">تقارير تقييم المخاطر</li>
+              </ul>
+            </article>
+
+            <article class="service-sheet reveal" data-sheet="4">
+              <div class="service-sheet__head">
+                <span class="service-sheet__num">04</span>
+                <div class="service-icon"><i class="bi bi-award"></i></div>
+              </div>
+              <h3 data-i18n="services.s4Title">التراخيص والاعتمادات</h3>
+              <p data-i18n="services.s4Text">إصدار وتجديد الرخص، متابعة الاعتماد لدى الجهات المختصة، ومعاملات الصكوك والقرارات.</p>
+              <button class="service-sheet__toggle" type="button" aria-expanded="false">
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <ul class="service-sheet__list">
+                <li data-i18n="services.s4List1">إصدار رخص الدفاع المدني</li>
+                <li data-i18n="services.s4List2">تجديد رخص الدفاع المدني</li>
+                <li data-i18n="services.s4List3">إصدار تصاريح السلامة</li>
+                <li data-i18n="services.s4List4">تجديد تصاريح السلامة</li>
+                <li data-i18n="services.s4List5">إصدار شهادات السلامة</li>
+                <li data-i18n="services.s4List6">متابعة إجراءات الاعتماد لدى الجهات المختصة</li>
+                <li data-i18n="services.s4List7">استخراج رخص البناء</li>
+                <li data-i18n="services.s4List8">تعديل الرخص الإنشائية</li>
+                <li data-i18n="services.s4List9">معاملات الصكوك</li>
+                <li data-i18n="services.s4List10">أعمال الدمج وتجزئة الأراضي</li>
+                <li data-i18n="services.s4List11">أعمال القرارات المساحية</li>
+              </ul>
+            </article>
+
+            <article class="service-sheet reveal" data-sheet="5">
+              <div class="service-sheet__head">
+                <span class="service-sheet__num">05</span>
+                <div class="service-icon"><i class="bi bi-binoculars"></i></div>
+              </div>
+              <h3 data-i18n="services.s5Title">الإشراف والاستلام</h3>
+              <p data-i18n="services.s5Text">مراجعة تنفيذ الأنظمة، اختبارها قبل التسليم وإعداد تقارير الاستلام النهائية.</p>
+              <button class="service-sheet__toggle" type="button" aria-expanded="false">
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <ul class="service-sheet__list">
+                <li data-i18n="services.s5List1">الإشراف على تنفيذ أنظمة السلامة</li>
+                <li data-i18n="services.s5List2">استلام مشاريع السلامة</li>
+                <li data-i18n="services.s5List3">مراجعة أعمال المقاولين</li>
+                <li data-i18n="services.s5List4">اختبار الأنظمة قبل التسليم</li>
+                <li data-i18n="services.s5List5">إعداد تقارير الاستلام النهائي</li>
+              </ul>
+            </article>
+
+            <article class="service-sheet service-sheet--cta reveal">
+              <i class="bi bi-headset"></i>
+              <h3 data-i18n="services.needHelpTitle">تحتاج استشارة سريعة؟</h3>
+              <p data-i18n="services.needHelpText">تواصل مع فريقنا الفني وسنعاود الاتصال بك خلال ساعات العمل.</p>
+              <a href="#contact" class="btn btn-primary" data-i18n="services.needHelpBtn">تواصل الآن</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTORS -->
+      <section class="industries section section--soft">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-grid-1x2"></i> <span data-i18n="industries.eyebrow">القطاعات التي نخدمها</span></span>
+            <h2 data-i18n="industries.title">خبرات متنوعة في مختلف القطاعات.</h2>
+          </div>
+          <div class="industry-grid">
+            <div class="industry-pill reveal"><i class="bi bi-house-door"></i><span data-i18n="industry1">المشاريع السكنية</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-building"></i><span data-i18n="industry2">الأبراج</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-shop"></i><span data-i18n="industry3">المجمعات التجارية</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-hospital"></i><span data-i18n="industry4">المستشفيات</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-building-fill-check"></i><span data-i18n="industry5">الفنادق</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-mortarboard"></i><span data-i18n="industry6">المدارس</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-gear"></i><span data-i18n="industry7">المصانع</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-boxes"></i><span data-i18n="industry8">المستودعات</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-bank"></i><span data-i18n="industry9">المباني الحكومية</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-fuel-pump"></i><span data-i18n="industry10">محطات الوقود</span></div>
+            <div class="industry-pill reveal"><i class="bi bi-diagram-3"></i><span data-i18n="industry11">المشاريع متعددة الاستخدام</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="process section" id="process">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-signpost-split"></i> <span data-i18n="process.eyebrow">منهجية العمل</span></span>
+            <h2 data-i18n="process.title">خطة عملنا من الفكرة حتى الاعتماد والتسليم.</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline__step reveal">
+              <span>01</span>
+              <h3 data-i18n="process.step1Title">تحليل المتطلبات</h3>
+              <p data-i18n="process.step1Text">فهم احتياجات العميل والمشروع قبل وضع أي حل.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>02</span>
+              <h3 data-i18n="process.step2Title">دراسة التحديات الفنية</h3>
+              <p data-i18n="process.step2Text">تقييم المخاطر والقيود وتحديد أولويات العمل.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>03</span>
+              <h3 data-i18n="process.step3Title">تصميم حلول السلامة</h3>
+              <p data-i18n="process.step3Text">إعداد حلول حريق ووقاية تتوافق مع التخصصات المطلوبة.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>04</span>
+              <h3 data-i18n="process.step4Title">إعداد المخططات</h3>
+              <p data-i18n="process.step4Text">مخططات دقيقة ومراجعة منسجمة مع المعايير المعتمدة.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>05</span>
+              <h3 data-i18n="process.step5Title">مراجعة الجودة</h3>
+              <p data-i18n="process.step5Text">ضمان التزام الحلول بالاشتراطات والوثائق الفنية.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>06</span>
+              <h3 data-i18n="process.step6Title">الرفع والتنسيق</h3>
+              <p data-i18n="process.step6Text">تنسيق العمل مع الجهات المعنية والتحديثات الفنية المستمرة.</p>
+            </div>
+            <div class="timeline__step reveal">
+              <span>07</span>
+              <h3 data-i18n="process.step7Title">الإشراف والتسليم</h3>
+              <p data-i18n="process.step7Text">متابعة التنفيذ وإصدار التقارير النهائية والشهادات.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats section section--soft">
+        <div class="stats__blueprint" aria-hidden="true"></div>
+        <div class="container stats__grid">
+          <article class="stat-card reveal">
+            <i class="bi bi-calendar3"></i>
+            <strong class="counter" data-target="21">0</strong>
+            <span data-i18n="stats.years">سنوات خبرة</span>
+          </article>
+          <article class="stat-card reveal">
+            <i class="bi bi-kanban"></i>
+            <strong class="counter" data-target="500">0</strong>
+            <span data-i18n="stats.projects">مشروع</span>
+          </article>
+          <article class="stat-card reveal">
+            <i class="bi bi-people"></i>
+            <strong class="counter" data-target="250">0</strong>
+            <span data-i18n="stats.clients">عميل</span>
+          </article>
+          <article class="stat-card reveal">
+            <i class="bi bi-person-workspace"></i>
+            <strong class="counter" data-target="15">0</strong>
+            <span data-i18n="stats.engineers">مهندس واستشاري</span>
+          </article>
+          <article class="stat-card reveal">
+            <i class="bi bi-emoji-smile"></i>
+            <strong class="counter" data-target="98">0</strong>
+            <span data-i18n="stats.satisfaction">نسبة الرضا</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="projects section" id="projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-images"></i> <span data-i18n="projects.eyebrow">مشاريعنا المميزة</span></span>
+            <h2 data-i18n="projects.title">مجموعة من الأعمال التي تعكس خبرتنا واحترافيتنا.</h2>
+          </div>
+          <div class="project-grid">
+            <article class="project-card reveal">
+              <div class="project-card__media">
+                <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1000&q=85" alt="مشروع سكني" />
+                <span class="project-card__tag" data-i18n="projects.p1Tag">سكني</span>
+              </div>
+              <div class="project-card__content">
+                <h3 data-i18n="projects.p1Title">مجمع سكني فاخر</h3>
+                <p data-i18n="projects.p1Text">تصميم سلامة وإشراف على الاعتمادات.</p>
+              </div>
+            </article>
+            <article class="project-card reveal">
+              <div class="project-card__media">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" alt="مبنى تجاري" />
+                <span class="project-card__tag" data-i18n="projects.p2Tag">تجاري</span>
+              </div>
+              <div class="project-card__content">
+                <h3 data-i18n="projects.p2Title">مبنى إداري حديث</h3>
+                <p data-i18n="projects.p2Text">مراجعة فنية وإعداد مخططات متوافقة مع الاشتراطات.</p>
+              </div>
+            </article>
+            <article class="project-card reveal">
+              <div class="project-card__media">
+                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85" alt="مستشفى" />
+                <span class="project-card__tag" data-i18n="projects.p3Tag">صحي</span>
+              </div>
+              <div class="project-card__content">
+                <h3 data-i18n="projects.p3Title">مستشفى متقدم</h3>
+                <p data-i18n="projects.p3Text">تنفيذ حلول سلامة متقدمة ومتابعة الرخص.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials section section--soft">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-chat-quote"></i> <span data-i18n="testimonials.eyebrow">آراء العملاء</span></span>
+            <h2 data-i18n="testimonials.title">ثقة العملاء هي أفضل شهادة على الالتزام والجودة.</h2>
+          </div>
+          <div class="testimonial-slider reveal">
+            <div class="testimonial-track">
+              <article class="testimonial-card active">
+                <i class="bi bi-quote"></i>
+                <p data-i18n="testimonials.t1">"التزامهم الدقيق بالمعايير وقدرتهم على تسريع اجراءات الاعتماد كان السبب الرئيسي لنجاح مشروعنا."</p>
+                <div class="testimonial-card__person">
+                  <span class="testimonial-card__avatar">أ.ع</span>
+                  <div>
+                    <strong>أ. عبدالله الرشيدي</strong>
+                    <span data-i18n="testimonials.t1Role">مدير مشاريع</span>
+                  </div>
+                </div>
+              </article>
+              <article class="testimonial-card">
+                <i class="bi bi-quote"></i>
+                <p data-i18n="testimonials.t2">"الفريق قدم لنا حلولاً عملية ومهنية من أول يوم، وحقق التوازن بين الإبداع والالتزام."</p>
+                <div class="testimonial-card__person">
+                  <span class="testimonial-card__avatar">ن.ق</span>
+                  <div>
+                    <strong>أ. نورة القحطاني</strong>
+                    <span data-i18n="testimonials.t2Role">مشرفة تطوير</span>
+                  </div>
+                </div>
+              </article>
+              <article class="testimonial-card">
+                <i class="bi bi-quote"></i>
+                <p data-i18n="testimonials.t3">"النتائج كانت مبهرة، خاصة في ما يتعلق بالتقارير الفنية والتنسيق مع الجهات المختصة."</p>
+                <div class="testimonial-card__person">
+                  <span class="testimonial-card__avatar">ف.س</span>
+                  <div>
+                    <strong>أ. فهد آل سليمان</strong>
+                    <span data-i18n="testimonials.t3Role">مالك مشروع</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="testimonial-dots"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq section">
+        <div class="container faq__grid">
+          <div class="faq__content reveal">
+            <span class="eyebrow"><i class="bi bi-question-circle"></i> <span data-i18n="faq.eyebrow">الأسئلة الشائعة</span></span>
+            <h2 data-i18n="faq.title">معلومات عملية تساعدك على اتخاذ القرار المناسب.</h2>
+            <p data-i18n="faq.text">نقدم لك إجابات واضحة حول خدماتنا، آلية العمل، والوقت المتوقع لكل مرحلة.</p>
+            <a href="#contact" class="btn btn-secondary" data-i18n="faq.moreQuestions">لديك سؤال آخر؟ تواصل معنا</a>
+          </div>
+          <div class="faq__list reveal">
+            <div class="faq-item active">
+              <button class="faq-question">
+                <span data-i18n="faq.q1">هل تتم مراجعة المشاريع وفق الكود السعودي؟</span>
+                <i class="bi bi-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p data-i18n="faq.a1">نعم، نقوم بمراجعة جميع الحلول والتصاميم وفق الاشتراطات السعودية واللوائح المعمول بها.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                <span data-i18n="faq.q2">هل يمكنكم متابعة التراخيص والاعتمادات؟</span>
+                <i class="bi bi-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p data-i18n="faq.a2">بالتأكيد، نتابع كافة الإجراءات مع الدفاع المدني والجهات المختصة حتى الحصول على الاعتماد النهائي.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                <span data-i18n="faq.q3">هل تعملون على المشاريع الصغيرة والكبيرة؟</span>
+                <i class="bi bi-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p data-i18n="faq.a3">نعم، نعمل على المشاريع السكنية والتجارية والمجمعات الصناعية والجهات الحكومية بنفس الدرجة من الاهتمام.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="partners section section--soft" id="clients">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-patch-check"></i> <span data-i18n="partners.eyebrow">الشركاء والاعتمادات</span></span>
+            <h2 data-i18n="partners.title">نعمل وفق أعلى المعايير مع جهات موثوقة وشركاء نجاح.</h2>
+          </div>
+          <div class="partners-row reveal">
+            <div><i class="bi bi-building"></i>Saudi Engineers</div>
+            <div><i class="bi bi-shield-check"></i>Defense Civil</div>
+            <div><i class="bi bi-bank"></i>Municipal Authorities</div>
+            <div><i class="bi bi-handshake"></i>Partner Co.</div>
+            <div><i class="bi bi-flag"></i>Vision 2030</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BANNER -->
+      <section class="cta-banner section">
+        <div class="cta-banner__blueprint" aria-hidden="true"></div>
+        <div class="container cta-banner__card reveal">
+          <div>
+            <span class="eyebrow"><i class="bi bi-rocket-takeoff"></i> <span data-i18n="cta.eyebrow">ابدأ مشروعك</span></span>
+            <h2 data-i18n="cta.title">دعنا نبدأ مشروعك… مع خبرة هندسية مضمونة.</h2>
+            <p data-i18n="cta.text">سواء كنت في البداية أو تبحث عن حل لمشكلة فنية معقدة، فنحن جاهزون لتقديم الخبرة اللازمة من أول دراسة حتى الاعتماد النهائي.</p>
+          </div>
+          <div class="cta-banner__actions">
+            <a href="#contact" class="btn btn-primary btn-lg" data-i18n="cta.primaryBtn">اطلب استشارة الآن</a>
+            <a href="https://wa.me/966112345678" class="btn btn-ghost btn-lg" data-i18n="cta.secondaryBtn">تواصل عبر واتساب</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact section" id="contact">
+        <div class="container contact__grid">
+          <div class="contact__details reveal">
+            <span class="eyebrow"><i class="bi bi-headset"></i> <span data-i18n="contact.eyebrow">تواصل معنا</span></span>
+            <h2 data-i18n="contact.title">نحن مستعدون لمساعدتك في كل مرحلة.</h2>
+            <p data-i18n="contact.text">أرسل لنا بيانات مشروعك وسنعود إليك فوراً مع خطة أولية مناسبة.</p>
+            <ul class="contact-list">
+              <li><a href="tel:+966112345678"><i class="bi bi-telephone"></i> +966 11 234 5678</a></li>
+              <li><a href="mailto:info@darelbenaa.com"><i class="bi bi-envelope"></i> info@darelbenaa.com</a></li>
+              <li><span><i class="bi bi-geo-alt"></i> <span data-i18n="contact.locationText">الرياض – السعودية</span></span></li>
+            </ul>
+            <div class="contact__quick">
+              <a href="https://wa.me/966112345678" class="btn btn-secondary"><i class="bi bi-whatsapp"></i> <span data-i18n="contact.whatsappBtn">واتساب فوري</span></a>
+              <a href="tel:+966112345678" class="btn btn-secondary"><i class="bi bi-telephone"></i> <span data-i18n="contact.callBtn">اتصال مباشر</span></a>
+            </div>
+          </div>
+          <div class="contact__card reveal">
+            <form class="contact-form">
+              <div class="form-row">
+                <label>
+                  <span data-i18n="form.name">الاسم</span>
+                  <input type="text" data-i18n-placeholder="form.namePlaceholder" placeholder="أدخل اسمك" required />
+                </label>
+                <label>
+                  <span data-i18n="form.company">اسم المنشأة</span>
+                  <input type="text" data-i18n-placeholder="form.companyPlaceholder" placeholder="اسم المنشأة" />
+                </label>
+              </div>
+              <label>
+                <span data-i18n="form.service">نوع الخدمة</span>
+                <select>
+                  <option data-i18n="form.serviceOpt1">الاستشارات الهندسية للسلامة</option>
+                  <option data-i18n="form.serviceOpt2">التصميم الهندسي</option>
+                  <option data-i18n="form.serviceOpt3">التقارير الفنية</option>
+                  <option data-i18n="form.serviceOpt4">التراخيص والاعتمادات</option>
+                  <option data-i18n="form.serviceOpt5">الإشراف والاستلام</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="form.project">وصف المشروع</span>
+                <textarea rows="4" data-i18n-placeholder="form.projectPlaceholder" placeholder="أخبرنا عن مشروعك"></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <span data-i18n="form.submit">إرسال الطلب</span>
+                <i class="bi bi-send"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAP -->
+      <section class="map section">
+        <div class="container map__card reveal">
+          <div class="map-embed">
+            <iframe
+              id="map-iframe"
+              title="خريطة المكتب"
+              src="https://www.google.com/maps?q=Riyadh%20Saudi%20Arabia&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <a class="map-fallback-link" href="https://www.google.com/maps/search/?api=1&query=Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener noreferrer">
+              <img id="map-fallback" class="map-fallback" alt="موقع المكتب - افتح في خرائط Google" />
+            </a>
+            <button id="map-reload-btn" class="map-reload-btn" aria-hidden="true" data-i18n="map.viewBtn">عرض الخريطة</button>
+          </div>
+          <noscript>
+            <a href="https://www.google.com/maps/search/?api=1&query=Riyadh%20Saudi%20Arabia" target="_blank" rel="noopener noreferrer">
+              <img alt="موقع المكتب" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1400&q=80" />
+            </a>
+          </noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__blueprint" aria-hidden="true"></div>
+      <div class="container footer__grid">
+        <div class="footer__brand-col">
+          <a href="#home" class="brand footer-brand">
+            <img src="logo.jpeg" alt="شعار دليل المباني" />
+            <div>
+              <strong data-i18n="brandName">دليل المباني</strong>
+              <span data-i18n="brandTag">الاستشارات الهندسية</span>
+            </div>
+          </a>
+          <p data-i18n="footer.text">شريكك الهندسي في المشاريع المعقدة، من الفكرة إلى الاعتماد والنجاح.</p>
+          <div class="footer__social">
+            <a href="https://wa.me/966112345678" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="mailto:info@darelbenaa.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 data-i18n="footer.linksTitle">روابط سريعة</h3>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+            <li><a href="#services" data-i18n="nav.services">خدماتنا</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">مشاريعنا</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.servicesTitle">خدماتنا</h3>
+          <ul>
+            <li><a href="#services" data-i18n="services.s1Title">الاستشارات الهندسية للسلامة</a></li>
+            <li><a href="#services" data-i18n="services.s2Title">التصميم الهندسي</a></li>
+            <li><a href="#services" data-i18n="services.s4Title">التراخيص والاعتمادات</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.contactTitle">تواصل</h3>
+          <ul>
+            <li><a href="tel:+966112345678">+966 11 234 5678</a></li>
+            <li><a href="mailto:info@darelbenaa.com">info@darelbenaa.com</a></li>
+            <li><span data-i18n="contact.locationText">الرياض – السعودية</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <span data-i18n="footer.rights">© 2026 دليل المباني للاستشارات الهندسية. جميع الحقوق محفوظة.</span>
+      </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="العودة إلى أعلى الصفحة"><i class="bi bi-arrow-up"></i></button>
+    <a href="https://wa.me/966112345678" class="whatsapp-float" aria-label="واتساب"><i class="bi bi-whatsapp"></i></a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
