@@ -159,6 +159,30 @@ const translations = {
     'projects.p3Title': 'مستشفى متقدم',
     'projects.p3Text': 'تنفيذ حلول سلامة متقدمة ومتابعة الرخص.',
     'projects.p3Tag': 'صحي',
+    'projects.p4Title': 'مجمع صناعي متكامل',
+    'projects.p4Text': 'أنظمة إطفاء ومكافحة حريق ومخططات إخلاء معتمدة.',
+    'projects.p4Tag': 'صناعي',
+    'projects.p5Title': 'مجمع مدارس حديث',
+    'projects.p5Text': 'تصميم سلامة شامل ومتابعة تصاريح الدفاع المدني.',
+    'projects.p5Tag': 'تعليمي',
+    'projects.p6Title': 'فندق فاخر',
+    'projects.p6Text': 'حلول سلامة متقدمة وإشراف حتى شهادة الاستلام.',
+    'projects.p6Tag': 'فندقي',
+
+    'approach.eyebrow': 'أسلوبنا في العمل',
+    'approach.title': 'نحب إيجاد الحلول للتحديات المعقدة.',
+    'approach.s1Title': 'الدراسة والتحليل',
+    'approach.s1Text': 'نبدأ بفهم عميق لاحتياجات المشروع ودراسة الموقع والاشتراطات قبل اقتراح أي حل هندسي.',
+    'approach.s1Tag': 'تحليل المتطلبات',
+    'approach.s2Title': 'الفكرة والتصميم',
+    'approach.s2Text': 'نحوّل التحديات إلى تصاميم عملية ومبتكرة تجمع بين الجمال والوظيفة والالتزام بالكود السعودي.',
+    'approach.s2Tag': 'حلول مبتكرة',
+    'approach.s3Title': 'المراجعة والاعتماد',
+    'approach.s3Text': 'مراجعة فنية دقيقة وضمان جودة، ثم متابعة الاعتماد لدى الدفاع المدني والجهات المختصة.',
+    'approach.s3Tag': 'ضمان الجودة',
+    'approach.s4Title': 'الإشراف والتسليم',
+    'approach.s4Text': 'نرافق التنفيذ ميدانياً ونختبر الأنظمة ونصدر التقارير النهائية حتى تسليم المشروع بنجاح.',
+    'approach.s4Tag': 'حتى التسليم',
 
     'testimonials.eyebrow': 'آراء العملاء',
     'testimonials.title': 'ثقة العملاء هي أفضل شهادة على الالتزام والجودة.',
@@ -380,6 +404,30 @@ const translations = {
     'projects.p3Title': 'Advanced hospital',
     'projects.p3Text': 'Implementation of advanced safety systems and permit follow-up.',
     'projects.p3Tag': 'Healthcare',
+    'projects.p4Title': 'Integrated industrial complex',
+    'projects.p4Text': 'Fire suppression systems and approved evacuation plans.',
+    'projects.p4Tag': 'Industrial',
+    'projects.p5Title': 'Modern school campus',
+    'projects.p5Text': 'Comprehensive safety design and civil-defense permit follow-up.',
+    'projects.p5Tag': 'Education',
+    'projects.p6Title': 'Luxury hotel',
+    'projects.p6Text': 'Advanced safety solutions and supervision through handover.',
+    'projects.p6Tag': 'Hospitality',
+
+    'approach.eyebrow': 'How we work',
+    'approach.title': 'We love solving complex challenges.',
+    'approach.s1Title': 'Study & analysis',
+    'approach.s1Text': 'We start with a deep understanding of the project needs, site, and requirements before proposing any solution.',
+    'approach.s1Tag': 'Requirements analysis',
+    'approach.s2Title': 'Concept & design',
+    'approach.s2Text': 'We turn challenges into practical, innovative designs that balance form, function, and Saudi code compliance.',
+    'approach.s2Tag': 'Innovative solutions',
+    'approach.s3Title': 'Review & approval',
+    'approach.s3Text': 'Precise technical review and quality assurance, then approval follow-up with civil defense and the authorities.',
+    'approach.s3Tag': 'Quality assurance',
+    'approach.s4Title': 'Supervision & handover',
+    'approach.s4Text': 'We supervise execution on site, test the systems, and issue final reports through successful handover.',
+    'approach.s4Tag': 'Through handover',
 
     'testimonials.eyebrow': 'Client feedback',
     'testimonials.title': 'Client trust is the strongest evidence of quality and commitment.',
@@ -499,7 +547,9 @@ function setLanguage(lang, persist = true) {
 
 function initStickyHeader() {
   const onScroll = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 20);
+    const scrolled = window.scrollY > 60;
+    header.classList.toggle('is-scrolled', scrolled);
+    document.body.classList.toggle('is-scrolled', scrolled);
     const scrollTop = window.scrollY;
     const height = document.documentElement.scrollHeight - window.innerHeight;
     const progress = height > 0 ? (scrollTop / height) * 100 : 0;
@@ -941,6 +991,71 @@ function initScrollSpy() {
   }, { passive: true });
 }
 
+/* Hero background crossfade slideshow + progress + PREV/NEXT */
+function initHeroSlider() {
+  const slides = document.querySelectorAll('.hero__slide');
+  if (slides.length < 2) return;
+  const idxEl = document.querySelector('.hero__index');
+  const totalEl = document.querySelector('.hero__total');
+  const bar = document.querySelector('.hero__bar i');
+  const prev = document.querySelector('[data-hero-prev]');
+  const next = document.querySelector('[data-hero-next]');
+  const total = slides.length;
+  const rtl = document.documentElement.dir === 'rtl';
+  let i = 0, timer;
+
+  if (totalEl) totalEl.textContent = String(total).padStart(2, '0');
+  if (bar) bar.style.width = `${100 / total}%`;
+
+  const show = (n) => {
+    i = (n + total) % total;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    if (idxEl) idxEl.textContent = String(i + 1).padStart(2, '0');
+    if (bar) bar.style.transform = `translateX(${(rtl ? 1 : -1) * i * 100}%)`;
+  };
+  const restart = () => {
+    clearInterval(timer);
+    if (!prefersReducedMotion()) timer = setInterval(() => show(i + 1), 5500);
+  };
+  const go = (n) => { show(n); restart(); };
+  if (prev) prev.addEventListener('click', () => go(i - 1));
+  if (next) next.addEventListener('click', () => go(i + 1));
+  show(0);
+  restart();
+}
+
+/* Projects horizontal carousel with index + arrows (RTL-aware) */
+function initProjectCarousel() {
+  const track = document.querySelector('.project-track');
+  if (!track) return;
+  const prev = document.querySelector('[data-proj-prev]');
+  const next = document.querySelector('[data-proj-next]');
+  const cur = document.querySelector('[data-proj-current]');
+  const totalEl = document.querySelector('[data-proj-total]');
+  const cards = track.querySelectorAll('.project-card');
+  if (!cards.length) return;
+  if (totalEl) totalEl.textContent = String(cards.length).padStart(2, '0');
+
+  const step = () => {
+    const cs = getComputedStyle(track);
+    const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
+    return cards[0].getBoundingClientRect().width + gap;
+  };
+  const isRtl = () => getComputedStyle(track).direction === 'rtl';
+  const update = () => {
+    const idx = Math.round(Math.abs(track.scrollLeft) / step());
+    if (cur) cur.textContent = String(Math.min(idx + 1, cards.length)).padStart(2, '0');
+  };
+  const move = (forward) => {
+    const sign = (isRtl() ? -1 : 1) * (forward ? 1 : -1);
+    track.scrollBy({ left: sign * step(), behavior: 'smooth' });
+  };
+  if (prev) prev.addEventListener('click', () => move(false));
+  if (next) next.addEventListener('click', () => move(true));
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  update();
+}
+
 function init() {
   const storedLang = safeGetStorage('dam-lang');
   setLanguage(storedLang === 'en' || storedLang === 'ar' ? storedLang : 'ar', false);
@@ -964,6 +1079,8 @@ function init() {
   initMagnetic();
   initParallax();
   initScrollSpy();
+  initHeroSlider();
+  initProjectCarousel();
 }
 
 init();

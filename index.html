@@ -95,63 +95,57 @@
 
     <main id="home">
       <!-- HERO -->
-      <section class="hero section">
-        <div class="hero__blueprint" aria-hidden="true"></div>
-        <div class="hero__glow hero__glow--one"></div>
-        <div class="hero__glow hero__glow--two"></div>
-        <div class="container hero__grid">
-          <div class="hero__content reveal-seq">
-            <span class="eyebrow"><i class="bi bi-patch-check-fill"></i> <span data-i18n="hero.eyebrow">استشارات هندسية معتمدة</span></span>
-            <h1 data-i18n="hero.title">نصمم الحلول التي يراها الآخرون مستحيلة.</h1>
-            <p data-i18n="hero.description">
-              في دليل المباني نساعد المطورين والمستثمرين والجهات الحكومية على تحويل التحديات الهندسية إلى حلول عملية ومعتمدة، وفق أعلى المعايير السعودية.
-            </p>
-            <div class="hero__actions">
-              <a href="#contact" class="btn btn-primary btn-lg" data-i18n="hero.primaryBtn">احصل على استشارة</a>
-              <a href="#services" class="btn btn-secondary btn-lg" data-i18n="hero.secondaryBtn">استكشف خدماتنا</a>
-            </div>
-            <ul class="hero__highlights">
-              <li><i class="bi bi-shield-check"></i><span data-i18n="hero.highlight1">اعتمادات الدفاع المدني</span></li>
-              <li><i class="bi bi-diagram-3"></i><span data-i18n="hero.highlight2">تصاميم احترافية</span></li>
-              <li><i class="bi bi-stars"></i><span data-i18n="hero.highlight3">خبرة متراكمة لأكثر من 21 عاماً</span></li>
-            </ul>
+      <section class="hero" id="hero-top">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__slide is-active" src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2100&q=85" alt="" />
+          <img class="hero__slide" src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=2100&q=85" alt="" />
+          <img class="hero__slide" src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=2100&q=85" alt="" />
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="hero__socials" aria-label="روابط التواصل الاجتماعي">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        </div>
+
+        <div class="container hero__inner reveal-seq">
+          <span class="eyebrow"><i class="bi bi-patch-check-fill"></i> <span data-i18n="hero.eyebrow">استشارات هندسية معتمدة</span></span>
+          <h1 data-i18n="hero.title">نصمم الحلول التي يراها الآخرون مستحيلة.</h1>
+          <p data-i18n="hero.description">
+            في دليل المباني نساعد المطورين والمستثمرين والجهات الحكومية على تحويل التحديات الهندسية إلى حلول عملية ومعتمدة، وفق أعلى المعايير السعودية.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn-primary btn-lg" data-i18n="hero.primaryBtn">احصل على استشارة</a>
+            <a href="#services" class="btn btn-outline btn-lg" data-i18n="hero.secondaryBtn">استكشف خدماتنا</a>
           </div>
-          <div class="hero__visual reveal-seq">
-            <div class="hero-card hero-card--main">
-              <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=85" alt="مشروع هندسي حديث" />
-              <div class="hero-card__overlay">
-                <h3 data-i18n="hero.cardTitle">من الدراسة إلى الاعتماد</h3>
-                <p data-i18n="hero.cardText">تخطيط شامل، مراجعات فنية، وشراكة مستمرة حتى التسليم.</p>
-              </div>
-            </div>
 
-            <div class="hero-seal" aria-hidden="true">
-              <svg viewBox="0 0 200 200">
-                <defs>
-                  <path id="sealCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
-                </defs>
-                <circle class="hero-seal__ring" cx="100" cy="100" r="92" />
-                <circle class="hero-seal__ring hero-seal__ring--inner" cx="100" cy="100" r="66" />
-                <text class="hero-seal__text">
-                  <textPath href="#sealCircle" startOffset="0%">دليل المباني ✦ استشارات هندسية ✦ معتمد ✦ </textPath>
-                </text>
-                <g class="hero-seal__mark">
-                  <i></i>
-                </g>
-              </svg>
-              <div class="hero-seal__icon"><i class="bi bi-award-fill"></i></div>
+          <div class="hero__counters">
+            <div class="hero-counter">
+              <span class="hero-counter__ring"><strong class="counter" data-target="250">0</strong></span>
+              <span class="hero-counter__label" data-i18n="stats.clients">عميل</span>
             </div>
+            <div class="hero-counter">
+              <span class="hero-counter__ring"><strong class="counter" data-target="21">0</strong></span>
+              <span class="hero-counter__label" data-i18n="stats.years">سنوات خبرة</span>
+            </div>
+            <div class="hero-counter">
+              <span class="hero-counter__ring"><strong class="counter" data-target="500">0</strong></span>
+              <span class="hero-counter__label" data-i18n="stats.projects">مشروع</span>
+            </div>
+          </div>
+        </div>
 
-            <div class="hero-card hero-card--floating">
-              <div class="mini-stat">
-                <strong data-count="98">0</strong><span>%</span>
-                <span class="mini-stat__label" data-i18n="hero.statLabel">رضا العملاء</span>
-              </div>
-              <div class="mini-stat">
-                <strong data-count="500">0</strong><span>+</span>
-                <span class="mini-stat__label" data-i18n="hero.statLabel2">مشروع منجز</span>
-              </div>
-            </div>
+        <div class="hero__controls">
+          <div class="hero__progress" aria-hidden="true">
+            <span class="hero__index">01</span>
+            <span class="hero__bar"><i></i></span>
+            <span class="hero__total">03</span>
+          </div>
+          <div class="hero__nav">
+            <button class="hero__nav-btn" type="button" data-hero-prev aria-label="السابق"><i class="bi bi-chevron-right"></i></button>
+            <button class="hero__nav-btn" type="button" data-hero-next aria-label="التالي"><i class="bi bi-chevron-left"></i></button>
           </div>
         </div>
 
@@ -213,6 +207,64 @@
                   <p data-i18n="about.pillar2Text">أكثر من 15 مهندساً واستشارياً في مختلف التخصصات.</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPROACH — alternating image/text rows -->
+      <section class="approach section section--lines">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow"><i class="bi bi-bezier2"></i> <span data-i18n="approach.eyebrow">أسلوبنا في العمل</span></span>
+            <h2 data-i18n="approach.title">نحب إيجاد الحلول للتحديات المعقدة.</h2>
+          </div>
+
+          <div class="approach-row reveal">
+            <div class="approach-row__media">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=85" alt="" />
+            </div>
+            <div class="approach-row__body">
+              <span class="approach-row__num">01</span>
+              <h3 data-i18n="approach.s1Title">الدراسة والتحليل</h3>
+              <p data-i18n="approach.s1Text">نبدأ بفهم عميق لاحتياجات المشروع ودراسة الموقع والاشتراطات قبل اقتراح أي حل هندسي.</p>
+              <span class="approach-row__tag" data-i18n="approach.s1Tag">تحليل المتطلبات</span>
+            </div>
+          </div>
+
+          <div class="approach-row reveal">
+            <div class="approach-row__media">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85" alt="" />
+            </div>
+            <div class="approach-row__body">
+              <span class="approach-row__num">02</span>
+              <h3 data-i18n="approach.s2Title">الفكرة والتصميم</h3>
+              <p data-i18n="approach.s2Text">نحوّل التحديات إلى تصاميم عملية ومبتكرة تجمع بين الجمال والوظيفة والالتزام بالكود السعودي.</p>
+              <span class="approach-row__tag" data-i18n="approach.s2Tag">حلول مبتكرة</span>
+            </div>
+          </div>
+
+          <div class="approach-row reveal">
+            <div class="approach-row__media">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85" alt="" />
+            </div>
+            <div class="approach-row__body">
+              <span class="approach-row__num">03</span>
+              <h3 data-i18n="approach.s3Title">المراجعة والاعتماد</h3>
+              <p data-i18n="approach.s3Text">مراجعة فنية دقيقة وضمان جودة، ثم متابعة الاعتماد لدى الدفاع المدني والجهات المختصة.</p>
+              <span class="approach-row__tag" data-i18n="approach.s3Tag">ضمان الجودة</span>
+            </div>
+          </div>
+
+          <div class="approach-row reveal">
+            <div class="approach-row__media">
+              <img src="https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=1000&q=85" alt="" />
+            </div>
+            <div class="approach-row__body">
+              <span class="approach-row__num">04</span>
+              <h3 data-i18n="approach.s4Title">الإشراف والتسليم</h3>
+              <p data-i18n="approach.s4Text">نرافق التنفيذ ميدانياً ونختبر الأنظمة ونصدر التقارير النهائية حتى تسليم المشروع بنجاح.</p>
+              <span class="approach-row__tag" data-i18n="approach.s4Tag">حتى التسليم</span>
             </div>
           </div>
         </div>
@@ -496,6 +548,14 @@
         </div>
       </section>
 
+      <!-- BRAND WATERMARK BAND -->
+      <section class="watermark-band" aria-hidden="true">
+        <div class="container">
+          <span class="watermark-band__text" data-i18n="brandName">دليل المباني</span>
+          <span class="watermark-band__sub" data-i18n="brandTag">الاستشارات الهندسية</span>
+        </div>
+      </section>
+
       <!-- PROJECTS -->
       <section class="projects section" id="projects">
         <div class="container">
@@ -503,37 +563,76 @@
             <span class="eyebrow"><i class="bi bi-images"></i> <span data-i18n="projects.eyebrow">مشاريعنا المميزة</span></span>
             <h2 data-i18n="projects.title">مجموعة من الأعمال التي تعكس خبرتنا واحترافيتنا.</h2>
           </div>
-          <div class="project-grid">
-            <article class="project-card reveal">
-              <div class="project-card__media">
-                <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1000&q=85" alt="مشروع سكني" />
-                <span class="project-card__tag" data-i18n="projects.p1Tag">سكني</span>
-              </div>
-              <div class="project-card__content">
-                <h3 data-i18n="projects.p1Title">مجمع سكني فاخر</h3>
-                <p data-i18n="projects.p1Text">تصميم سلامة وإشراف على الاعتمادات.</p>
-              </div>
-            </article>
-            <article class="project-card reveal">
-              <div class="project-card__media">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" alt="مبنى تجاري" />
-                <span class="project-card__tag" data-i18n="projects.p2Tag">تجاري</span>
-              </div>
-              <div class="project-card__content">
-                <h3 data-i18n="projects.p2Title">مبنى إداري حديث</h3>
-                <p data-i18n="projects.p2Text">مراجعة فنية وإعداد مخططات متوافقة مع الاشتراطات.</p>
-              </div>
-            </article>
-            <article class="project-card reveal">
-              <div class="project-card__media">
-                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85" alt="مستشفى" />
-                <span class="project-card__tag" data-i18n="projects.p3Tag">صحي</span>
-              </div>
-              <div class="project-card__content">
-                <h3 data-i18n="projects.p3Title">مستشفى متقدم</h3>
-                <p data-i18n="projects.p3Text">تنفيذ حلول سلامة متقدمة ومتابعة الرخص.</p>
-              </div>
-            </article>
+          <div class="project-carousel reveal">
+            <div class="project-track">
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1000&q=85" alt="مشروع سكني" />
+                  <span class="project-card__tag" data-i18n="projects.p1Tag">سكني</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p1Title">مجمع سكني فاخر</h3>
+                  <p data-i18n="projects.p1Text">تصميم سلامة وإشراف على الاعتمادات.</p>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" alt="مبنى تجاري" />
+                  <span class="project-card__tag" data-i18n="projects.p2Tag">تجاري</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p2Title">مبنى إداري حديث</h3>
+                  <p data-i18n="projects.p2Text">مراجعة فنية وإعداد مخططات متوافقة مع الاشتراطات.</p>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85" alt="مستشفى" />
+                  <span class="project-card__tag" data-i18n="projects.p3Tag">صحي</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p3Title">مستشفى متقدم</h3>
+                  <p data-i18n="projects.p3Text">تنفيذ حلول سلامة متقدمة ومتابعة الرخص.</p>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=85" alt="مشروع صناعي" />
+                  <span class="project-card__tag" data-i18n="projects.p4Tag">صناعي</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p4Title">مجمع صناعي متكامل</h3>
+                  <p data-i18n="projects.p4Text">أنظمة إطفاء ومكافحة حريق ومخططات إخلاء معتمدة.</p>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85" alt="مشروع تعليمي" />
+                  <span class="project-card__tag" data-i18n="projects.p5Tag">تعليمي</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p5Title">مجمع مدارس حديث</h3>
+                  <p data-i18n="projects.p5Text">تصميم سلامة شامل ومتابعة تصاريح الدفاع المدني.</p>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85" alt="مشروع فندقي" />
+                  <span class="project-card__tag" data-i18n="projects.p6Tag">فندقي</span>
+                </div>
+                <div class="project-card__content">
+                  <h3 data-i18n="projects.p6Title">فندق فاخر</h3>
+                  <p data-i18n="projects.p6Text">حلول سلامة متقدمة وإشراف حتى شهادة الاستلام.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="project-foot reveal">
+            <span class="carousel-index"><b data-proj-current>01</b> <span class="carousel-index__sep">/</span> <span data-proj-total>06</span></span>
+            <div class="carousel-nav">
+              <button class="carousel-btn" type="button" data-proj-prev aria-label="السابق"><i class="bi bi-chevron-right"></i></button>
+              <button class="carousel-btn" type="button" data-proj-next aria-label="التالي"><i class="bi bi-chevron-left"></i></button>
+            </div>
           </div>
         </div>
       </section>
@@ -788,6 +887,7 @@
     </footer>
 
     <button class="back-to-top" aria-label="العودة إلى أعلى الصفحة"><i class="bi bi-arrow-up"></i></button>
+    <a href="tel:+966112345678" class="phone-float" aria-label="اتصال هاتفي"><i class="bi bi-telephone-fill"></i></a>
     <a href="https://wa.me/966112345678" class="whatsapp-float" aria-label="واتساب"><i class="bi bi-whatsapp"></i></a>
 
     <script src="script.js"></script>
