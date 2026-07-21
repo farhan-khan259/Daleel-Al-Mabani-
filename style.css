@@ -102,6 +102,30 @@ ul { margin: 0; }
 .section--lines > .container { position: relative; z-index: 1; }
 
 /* ==========================================================================
+   Stacked rounded panels — sections slide up over each other (reference-style)
+   ========================================================================== */
+main > section.stack-panel {
+  position: relative;
+  background: var(--bg);
+  border-start-start-radius: 44px;
+  border-start-end-radius: 44px;
+  margin-top: -44px;
+  box-shadow: 0 -26px 55px rgba(13, 35, 64, 0.08);
+}
+main > section.stack-panel.section--soft { background: var(--soft); }
+main > section.stack-panel.trust-strip { background: var(--soft); }
+main > section.stack-panel.watermark-band { background: var(--soft); }
+/* first panel needs generous top padding so its rounded lip clears the hero */
+main > section.stack-panel:first-of-type { margin-top: -48px; }
+
+/* entry motion: the whole panel rises from below as it enters the viewport */
+.stack-panel { opacity: 0; transform: translateY(72px); transition: opacity 0.8s ease, transform 0.95s cubic-bezier(.22, .61, .36, 1); will-change: opacity, transform; }
+.stack-panel.is-inview { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .stack-panel { opacity: 1 !important; transform: none !important; }
+}
+
+/* ==========================================================================
    Reveal system
    ========================================================================== */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.22, .61, .36, 1); will-change: opacity, transform; }

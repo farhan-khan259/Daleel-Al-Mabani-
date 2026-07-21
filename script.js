@@ -991,6 +991,29 @@ function initScrollSpy() {
   }, { passive: true });
 }
 
+/* Stacked rounded panels: each section rises up over the previous while scrolling */
+function initSectionStack() {
+  const sections = document.querySelectorAll('main > section:not(.hero)');
+  if (!sections.length) return;
+  sections.forEach((s) => s.classList.add('stack-panel'));
+
+  if (prefersReducedMotion()) {
+    sections.forEach((s) => s.classList.add('is-inview'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-inview');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
+
+  sections.forEach((s) => io.observe(s));
+}
+
 /* Hero background crossfade slideshow + progress + PREV/NEXT */
 function initHeroSlider() {
   const slides = document.querySelectorAll('.hero__slide');
@@ -1081,6 +1104,7 @@ function init() {
   initScrollSpy();
   initHeroSlider();
   initProjectCarousel();
+  initSectionStack();
 }
 
 init();
