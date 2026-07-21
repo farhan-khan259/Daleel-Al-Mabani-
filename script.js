@@ -487,6 +487,13 @@ function setLanguage(lang, persist = true) {
   document.body.classList.toggle('lang-en', lang === 'en');
   document.body.classList.toggle('lang-ar', lang === 'ar');
 
+  // re-apply the cinematic word-split after i18n rewrites the headline text
+  const heroH1 = document.querySelector('.hero h1');
+  if (heroH1) {
+    heroH1.removeAttribute('data-split');
+    if (typeof initHeroSplit === 'function') initHeroSplit();
+  }
+
   if (persist) safeSetStorage('dam-lang', lang);
 }
 
@@ -822,6 +829,118 @@ function initOutsideClickForDropdown() {
   });
 }
 
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isFinePointer = () => window.matchMedia('(pointer: fine)').matches;
+
+/* Magnetic pull on primary CTAs — subtle, desktop-only */
+function initMagnetic() {
+  if (prefersReducedMotion() || !isFinePointer()) return;
+  const targets = document.querySelectorAll('.btn-primary, .header-cta, .back-to-top, .whatsapp-float');
+  targets.forEach((el) => {
+    const strength = 0.32;
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * strength}px, ${y * strength - 3}px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+}
+
+/* Scroll-driven parallax for ambient layers */
+function initParallax() {
+  if (prefersReducedMotion()) return;
+  const layers = [
+    { el: document.querySelector('.hero__glow--one'), speed: 0.12 },
+    { el: document.querySelector('.hero__glow--two'), speed: -0.08 },
+    { el: document.querySelector('.hero__visual'), speed: 0.05 },
+  ].filter((l) => l.el);
+  if (!layers.length) return;
+
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    layers.forEach(({ el, speed }) => {
+      el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+    });
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+}
+
+/* Word-by-word cinematic reveal on the hero headline */
+function initHeroSplit() {
+  const heading = document.querySelector('.hero h1');
+  if (!heading || prefersReducedMotion() || heading.dataset.split) return;
+  heading.dataset.split = '1';
+
+  const units = [];
+  heading.childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent.split(/(\s+)/).forEach((chunk) => {
+        if (chunk.trim() === '') { if (chunk.length) units.push({ space: true }); }
+        else units.push({ text: chunk });
+      });
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      units.push({ html: node.outerHTML });
+    }
+  });
+
+  const wordUnits = units.filter((u) => !u.space);
+  const lastIndex = wordUnits.length - 1;
+
+  heading.innerHTML = '';
+  let i = 0;
+  units.forEach((u) => {
+    if (u.space) { heading.appendChild(document.createTextNode(' ')); return; }
+    const wrap = document.createElement('span');
+    wrap.className = 'split-word';
+    const inner = document.createElement('span');
+    if (u.html) inner.innerHTML = u.html;
+    else inner.textContent = u.text;
+    // accent the final word for a premium gold flourish
+    if (i === lastIndex) inner.classList.add('text-gold');
+    inner.style.animationDelay = `${0.34 + i * 0.055}s`;
+    wrap.appendChild(inner);
+    heading.appendChild(wrap);
+    i += 1;
+  });
+}
+
+/* Active-section highlighting in the nav via scroll spy */
+function initScrollSpy() {
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.main-nav > a[href^="#"]');
+  if (!sections.length || !navLinks.length) return;
+  const byId = {};
+  navLinks.forEach((a) => { byId[a.getAttribute('href')] = a; });
+
+  const homeLink = byId['#home'];
+  const setActive = (link) => {
+    if (!link) return;
+    navLinks.forEach((a) => a.classList.remove('active'));
+    link.classList.add('active');
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    if (window.scrollY < 260) { setActive(homeLink); return; }
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      setActive(byId['#' + entry.target.id]);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach((s) => observer.observe(s));
+
+  // near the top, the hero (no section id) should keep "Home" active
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 260) setActive(homeLink);
+  }, { passive: true });
+}
+
 function init() {
   const storedLang = safeGetStorage('dam-lang');
   setLanguage(storedLang === 'en' || storedLang === 'ar' ? storedLang : 'ar', false);
@@ -841,6 +960,10 @@ function init() {
   initMapFallback();
   initHeroTilt();
   initOutsideClickForDropdown();
+  initHeroSplit();
+  initMagnetic();
+  initParallax();
+  initScrollSpy();
 }
 
 init();
