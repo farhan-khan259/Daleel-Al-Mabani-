@@ -1,0 +1,210 @@
+/* services.css — Dedicated styles for services.html
+   Keeps page-specific rules separate and fully responsive.
+   Relies on CSS variables defined in style.css (colors, radii, etc.)
+*/
+
+/* Base scope for services page */
+/* Use lightweight resets for the page-specific elements */
+.services-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 0; /* ensure hero has square corners */
+}
+.services-hero .hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.services-hero .hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(0.9) saturate(0.9) brightness(0.55);
+  border-radius: 0; /* make background image square */
+}
+.services-hero .hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));
+  z-index: 1;
+}
+.services-hero .hero__inner {
+  position: relative;
+  z-index: 2;
+  padding: 4.5rem 0;
+}
+.services-hero h1 {
+  margin: 0 0 1.6rem 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+  color: #ffffff;
+  font-weight: 800;
+}
+.services-hero .eyebrow { color: rgba(255,255,255,0.9); }
+
+/* SECTION HEADING */
+.section-heading {
+  text-align: center;
+  margin-bottom: 2.6rem;
+}
+.section-heading h2 {
+  font-size: clamp(1.4rem, 3.6vw, 2rem);
+  color: var(--primary);
+  margin: 0 0 0.6rem 0;
+}
+.section-heading .eyebrow { display: inline-block; margin-bottom: 0.9rem; }
+
+/* Services grid — stacked cards layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.service-sheet {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 18px 40px rgba(13,35,64,0.06);
+  border: 1px solid rgba(13,35,64,0.04);
+  overflow: visible;
+}
+.service-sheet__head {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.service-sheet__num {
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(var(--accent-rgb),0.06);
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.service-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: rgba(var(--accent-rgb),0.09);
+  color: var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(var(--accent-rgb),0.06);
+  flex-shrink: 0;
+}
+.service-sheet h3 {
+  margin: 0.6rem 0 0.45rem 0;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+.service-sheet p {
+  margin: 0 0 0.8rem 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.service-sheet__list {
+  margin: 0.6rem 0 0 1.05rem;
+  padding: 0;
+  list-style: disc;
+  color: var(--text);
+}
+.service-sheet__list li {
+  margin: 0.45rem 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.service-sheet__toggle {
+  background: transparent;
+  border: 0;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+}
+
+.service-sheet--cta {
+  background: rgba(var(--primary-rgb,13,35,64),0.04);
+  padding: 1.6rem 1.2rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  border-radius: 12px;
+}
+.service-sheet--cta h3 { margin: 0 0 0.2rem 0; }
+.service-sheet--cta p { margin: 0; color: var(--text-muted); }
+.service-sheet--cta .btn { margin-left: auto; }
+
+/* Narrow page left offset for nicer visuals (desktop centered container handles it) */
+.container.services-wrap { max-width: var(--container); margin: 0 auto; }
+
+/* Booking CTA (footer area) overrides for page-specific styling */
+.footer-cta {
+  padding-top: 2.4rem;
+  padding-bottom: 2.6rem;
+}
+.footer-cta__inner {
+  align-items: center;
+}
+.booking-form { gap: 0.5rem; }
+.booking-form .bf-item input,
+.booking-form .bf-item select { font-size: 0.95rem; }
+.bf-submit { min-width: 120px; }
+
+/* Accessibility tweaks: make the sr-only labels available to screen readers but not visible */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* Responsive behaviour */
+@media (min-width: 860px) {
+  /* On wider screens keep a centered column but allow roomy hero */
+  .services-grid { grid-template-columns: 1fr; max-width: 980px; margin: 0 auto; }
+  .service-sheet { padding: 1.6rem 1.8rem; }
+}
+
+@media (max-width: 900px) {
+  .hero__inner { padding: 3rem 0; }
+  .service-sheet { padding: 1rem; }
+  .services-hero h1 { font-size: clamp(1.6rem, 7vw, 2.6rem); }
+  .booking-form { grid-template-columns: 1fr 1fr; }
+  .footer-cta__inner { flex-direction: column; align-items: stretch; }
+}
+
+@media (max-width: 620px) {
+  .hero__inner { padding: 2rem 0; }
+  .services-hero { min-height: 220px; }
+  .section { padding: 3rem 0; }
+  .services-grid { gap: 1rem; }
+  .service-sheet { border-radius: 10px; padding: 0.9rem; }
+  .service-sheet__num { padding: 0.35rem 0.5rem; }
+  .service-icon { width: 34px; height: 34px; }
+  .services-hero h1 { font-size: 1.6rem; }
+  .section-heading h2 { font-size: 1.15rem; }
+  .booking-form { grid-template-columns: 1fr; }
+  .bf-submit { width: 100%; }
+}
+
+/* Minor utility helpers for the services page */
+.service-sheet .bi { font-size: 1rem; }
+
+/* Ensure lists inside service sheets don't cause width overflow */
+.service-sheet__list { word-break: normal; }
+
+/* Tighten the service-sheet__toggle dropdown styling when translated to english */
+.service-sheet__toggle i { font-size: 0.95rem; }
+
+/* Final safety: make the footer-cta and booking form adapt inside narrow header/containers */
+.footer-cta__title h2 { color: #fff; }
+.footer-cta__title p { color: rgba(255,255,255,0.85); }
+
+/* end services.css */
