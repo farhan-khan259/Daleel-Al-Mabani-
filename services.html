@@ -76,7 +76,7 @@
           <a href="index.html#contact" data-i18n="nav.contact">تواصل معنا</a>
         </nav>
 
-        <a href="index.html#contact" class="btn btn-primary header-cta">اطلب استشارة</a>
+        <a href="index.html#contact" class="btn btn-primary header-cta" data-i18n="nav.cta">اطلب استشارة</a>
       </div>
     </header>
 
@@ -95,48 +95,16 @@
         </div>
 
         <div class="container hero__inner reveal-seq">
-          <span class="eyebrow"><i class="bi bi-clipboard-check"></i> خدماتنا</span>
-          <h1>حلول هندسية شاملة لدعم مشاريعك من البداية حتى <span class="text-gold">التسليم</span>.</h1>
-          <p>نقدم باقة متكاملة من الخدمات الهندسية: استشارات السلامة، تصميم متكامل، تقارير فنية، تراخيص واعتمادات، وإشراف استلام ميداني.</p>
-          <div class="hero__actions">
-            <a href="#services" class="btn btn-primary btn-lg">تصفح الخدمات</a>
-            <a href="index.html#contact" class="btn btn-outline btn-lg">تواصل معنا</a>
-          </div>
-
-          <div class="hero__counters">
-            <div class="hero-counter">
-              <span class="hero-counter__ring"><strong class="counter" data-target="250">0</strong></span>
-              <span class="hero-counter__label">عميل</span>
-            </div>
-            <div class="hero-counter">
-              <span class="hero-counter__ring"><strong class="counter" data-target="21">0</strong></span>
-              <span class="hero-counter__label">سنوات خبرة</span>
-            </div>
-            <div class="hero-counter">
-              <span class="hero-counter__ring"><strong class="counter" data-target="500">0</strong></span>
-              <span class="hero-counter__label">مشروع</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__controls">
-          <div class="hero__progress" aria-hidden="true">
-            <span class="hero__index">01</span>
-            <span class="hero__bar"><i></i></span>
-            <span class="hero__total">03</span>
-          </div>
-          <div class="hero__nav">
-            <button class="hero__nav-btn" type="button" data-hero-prev aria-label="السابق"><i class="bi bi-chevron-right"></i></button>
-            <button class="hero__nav-btn" type="button" data-hero-next aria-label="التالي"><i class="bi bi-chevron-left"></i></button>
-          </div>
-        </div>
+          <span class="eyebrow"><i class="bi bi-clipboard-check"></i> <span data-i18n="services.eyebrow">خدماتنا</span></span>
+          <h1><span data-i18n="services.heroTitleBefore"></span><span class="text-gold" data-i18n="services.heroTitleHighlight">التسليم</span><span data-i18n="services.heroTitleAfter">.</span></h1>
+         
       </section>
 
       <section class="services section" id="services">
         <div class="container">
           <div class="section-heading reveal">
-            <span class="eyebrow"><i class="bi bi-bezier2"></i> حلولنا</span>
-            <h2>كل خدمة مصممة لتناسب متطلبات مشاريعك.</h2>
+            <span class="eyebrow"><i class="bi bi-bezier2"></i> <span data-i18n="services.eyebrow">حلولنا</span></span>
+            <h2 data-i18n="services.title">كل خدمة مصممة لتناسب متطلبات مشاريعك.</h2>
           </div>
 
           <div class="services-grid">
@@ -145,18 +113,18 @@
                 <span class="service-sheet__num">01</span>
                 <div class="service-icon"><i class="bi bi-shield-lock"></i></div>
               </div>
-              <h3>الاستشارات الهندسية للسلامة</h3>
-              <p>استشارات وقائية، تقييم مخاطر، ومراجعات تصاميم معتمدة وفق الكود السعودي.</p>
+              <h3 data-i18n="services.s1Title">الاستشارات الهندسية للسلامة</h3>
+              <p data-i18n="services.s1Text">استشارات وقائية، تقييم مخاطر، ومراجعات تصاميم معتمدة وفق الكود السعودي.</p>
               <button class="service-sheet__toggle" type="button" aria-expanded="false">
-                تفاصيل الخدمة
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
                 <i class="bi bi-chevron-down"></i>
               </button>
               <ul class="service-sheet__list">
-                <li>استشارات السلامة والوقاية من الحريق</li>
-                <li>دراسة اشتراطات الكود السعودي</li>
-                <li>تقييم مخاطر المنشآت</li>
-                <li>إعداد حلول السلامة للمشاريع</li>
-                <li>مراجعة واعتماد تصاميم السلامة</li>
+                <li data-i18n="services.s1List1">استشارات السلامة والوقاية من الحريق</li>
+                <li data-i18n="services.s1List2">دراسة اشتراطات الكود السعودي</li>
+                <li data-i18n="services.s1List3">تقييم مخاطر المنشآت</li>
+                <li data-i18n="services.s1List4">إعداد حلول السلامة للمشاريع</li>
+                <li data-i18n="services.s1List5">مراجعة واعتماد تصاميم السلامة</li>
               </ul>
             </article>
 
@@ -165,21 +133,21 @@
                 <span class="service-sheet__num">02</span>
                 <div class="service-icon"><i class="bi bi-building"></i></div>
               </div>
-              <h3>التصميم الهندسي</h3>
-              <p>تصميم مخططات السلامة، أنظمة إنذار ومكافحة الحريق، ومخططات ميكانيكية متكاملة.</p>
+              <h3 data-i18n="services.s2Title">التصميم الهندسي</h3>
+              <p data-i18n="services.s2Text">تصميم مخططات السلامة، أنظمة إنذار ومكافحة الحريق، ومخططات ميكانيكية متكاملة.</p>
               <button class="service-sheet__toggle" type="button" aria-expanded="false">
-                تفاصيل الخدمة
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
                 <i class="bi bi-chevron-down"></i>
               </button>
               <ul class="service-sheet__list">
-                <li>تصميم مخططات السلامة</li>
-                <li>تصميم أنظمة إنذار الحريق</li>
-                <li>تصميم أنظمة مكافحة الحريق</li>
-                <li>تصميم شبكات الإطفاء</li>
-                <li>تصميم المخططات الميكانيكية</li>
-                <li>إعداد مخططات الإخلاء والطوارئ</li>
-                <li>تحديث وتعديل المخططات القائمة</li>
-                <li>التصميم المعماري والإنشائي للمشاريع</li>
+                <li data-i18n="services.s2List1">تصميم مخططات السلامة</li>
+                <li data-i18n="services.s2List2">تصميم أنظمة إنذار الحريق</li>
+                <li data-i18n="services.s2List3">تصميم أنظمة مكافحة الحريق</li>
+                <li data-i18n="services.s2List4">تصميم شبكات الإطفاء</li>
+                <li data-i18n="services.s2List5">تصميم المخططات الميكانيكية</li>
+                <li data-i18n="services.s2List6">إعداد مخططات الإخلاء والطوارئ</li>
+                <li data-i18n="services.s2List7">تحديث وتعديل المخططات القائمة</li>
+                <li data-i18n="services.s2List8">التصميم المعماري والإنشائي للمشاريع</li>
               </ul>
             </article>
 
@@ -188,19 +156,19 @@
                 <span class="service-sheet__num">03</span>
                 <div class="service-icon"><i class="bi bi-file-earmark-medical"></i></div>
               </div>
-              <h3>التقارير الفنية</h3>
-              <p>تقارير كشف على المنشآت، تقارير مطابقة اشتراطات السلامة، وتقييم المخاطر.</p>
+              <h3 data-i18n="services.s3Title">التقارير الفنية</h3>
+              <p data-i18n="services.s3Text">تقارير كشف على المنشآت، تقارير مطابقة اشتراطات السلامة، وتقييم المخاطر.</p>
               <button class="service-sheet__toggle" type="button" aria-expanded="false">
-                تفاصيل الخدمة
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
                 <i class="bi bi-chevron-down"></i>
               </button>
               <ul class="service-sheet__list">
-                <li>إصدار التقارير الفنية المعتمدة</li>
-                <li>تقارير الكشف على المنشآت</li>
-                <li>تقارير سلامة المباني</li>
-                <li>تقارير سلامة التمديدات الكهربائية</li>
-                <li>تقارير مطابقة اشتراطات السلامة</li>
-                <li>تقارير تقييم المخاطر</li>
+                <li data-i18n="services.s3List1">إصدار التقارير الفنية المعتمدة</li>
+                <li data-i18n="services.s3List2">تقارير الكشف على المنشآت</li>
+                <li data-i18n="services.s3List3">تقارير سلامة المباني</li>
+                <li data-i18n="services.s3List4">تقارير سلامة التمديدات الكهربائية</li>
+                <li data-i18n="services.s3List5">تقارير مطابقة اشتراطات السلامة</li>
+                <li data-i18n="services.s3List6">تقارير تقييم المخاطر</li>
               </ul>
             </article>
 
@@ -209,24 +177,24 @@
                 <span class="service-sheet__num">04</span>
                 <div class="service-icon"><i class="bi bi-award"></i></div>
               </div>
-              <h3>التراخيص والاعتمادات</h3>
-              <p>إصدار وتجديد الرخص، متابعة الاعتماد لدى الجهات المختصة، ومعاملات الصكوك والقرارات.</p>
+              <h3 data-i18n="services.s4Title">التراخيص والاعتمادات</h3>
+              <p data-i18n="services.s4Text">إصدار وتجديد الرخص، متابعة الاعتماد لدى الجهات المختصة، ومعاملات الصكوك والقرارات.</p>
               <button class="service-sheet__toggle" type="button" aria-expanded="false">
-                تفاصيل الخدمة
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
                 <i class="bi bi-chevron-down"></i>
               </button>
               <ul class="service-sheet__list">
-                <li>إصدار رخص الدفاع المدني</li>
-                <li>تجديد رخص الدفاع المدني</li>
-                <li>إصدار تصاريح السلامة</li>
-                <li>تجديد تصاريح السلامة</li>
-                <li>إصدار شهادات السلامة</li>
-                <li>متابعة إجراءات الاعتماد لدى الجهات المختصة</li>
-                <li>استخراج رخص البناء</li>
-                <li>تعديل الرخص الإنشائية</li>
-                <li>معاملات الصكوك</li>
-                <li>أعمال الدمج وتجزئة الأراضي</li>
-                <li>أعمال القرارات المساحية</li>
+                <li data-i18n="services.s4List1">إصدار رخص الدفاع المدني</li>
+                <li data-i18n="services.s4List2">تجديد رخص الدفاع المدني</li>
+                <li data-i18n="services.s4List3">إصدار تصاريح السلامة</li>
+                <li data-i18n="services.s4List4">تجديد تصاريح السلامة</li>
+                <li data-i18n="services.s4List5">إصدار شهادات السلامة</li>
+                <li data-i18n="services.s4List6">متابعة إجراءات الاعتماد لدى الجهات المختصة</li>
+                <li data-i18n="services.s4List7">استخراج رخص البناء</li>
+                <li data-i18n="services.s4List8">تعديل الرخص الإنشائية</li>
+                <li data-i18n="services.s4List9">معاملات الصكوك</li>
+                <li data-i18n="services.s4List10">أعمال الدمج وتجزئة الأراضي</li>
+                <li data-i18n="services.s4List11">أعمال القرارات المساحية</li>
               </ul>
             </article>
 
@@ -235,26 +203,26 @@
                 <span class="service-sheet__num">05</span>
                 <div class="service-icon"><i class="bi bi-binoculars"></i></div>
               </div>
-              <h3>الإشراف والاستلام</h3>
-              <p>مراجعة تنفيذ الأنظمة، اختبارها قبل التسليم وإعداد تقارير الاستلام النهائية.</p>
+              <h3 data-i18n="services.s5Title">الإشراف والاستلام</h3>
+              <p data-i18n="services.s5Text">مراجعة تنفيذ الأنظمة، اختبارها قبل التسليم وإعداد تقارير الاستلام النهائية.</p>
               <button class="service-sheet__toggle" type="button" aria-expanded="false">
-                تفاصيل الخدمة
+                <span data-i18n="services.detailsToggle">تفاصيل الخدمة</span>
                 <i class="bi bi-chevron-down"></i>
               </button>
               <ul class="service-sheet__list">
-                <li>الإشراف على تنفيذ أنظمة السلامة</li>
-                <li>استلام مشاريع السلامة</li>
-                <li>مراجعة أعمال المقاولين</li>
-                <li>اختبار الأنظمة قبل التسليم</li>
-                <li>إعداد تقارير الاستلام النهائي</li>
+                <li data-i18n="services.s5List1">الإشراف على تنفيذ أنظمة السلامة</li>
+                <li data-i18n="services.s5List2">استلام مشاريع السلامة</li>
+                <li data-i18n="services.s5List3">مراجعة أعمال المقاولين</li>
+                <li data-i18n="services.s5List4">اختبار الأنظمة قبل التسليم</li>
+                <li data-i18n="services.s5List5">إعداد تقارير الاستلام النهائي</li>
               </ul>
             </article>
 
             <article class="service-sheet service-sheet--cta reveal">
               <i class="bi bi-headset"></i>
-              <h3>تحتاج استشارة سريعة؟</h3>
-              <p>تواصل مع فريقنا الفني وسنعاود الاتصال بك خلال ساعات العمل.</p>
-              <a href="index.html#contact" class="btn btn-primary">تواصل الآن</a>
+              <h3 data-i18n="services.needHelpTitle">تحتاج استشارة سريعة؟</h3>
+              <p data-i18n="services.needHelpText">تواصل مع فريقنا الفني وسنعاود الاتصال بك خلال ساعات العمل.</p>
+              <a href="index.html#contact" class="btn btn-primary" data-i18n="services.needHelpBtn">تواصل الآن</a>
             </article>
           </div>
         </div>
