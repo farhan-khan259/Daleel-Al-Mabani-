@@ -1185,16 +1185,16 @@ body.is-scrolled .menu-toggle span {
    max-height: 56px;
    object-fit: contain;
    display: block;
-   filter: saturate(0.4);
-   opacity: 0.75;
+  filter: none;
+  opacity: 1;
  }
  .trust-strip__brand:hover {
-   transform: translateY(-3px);
-   opacity: 1;
+  transform: none;
+  opacity: 1;
  }
  .trust-strip__brand:hover img {
-   filter: saturate(1);
-   opacity: 1;
+  filter: none;
+  opacity: 1;
  }
 @keyframes marquee {
   from {
@@ -1203,6 +1203,33 @@ body.is-scrolled .menu-toggle span {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* Partners marquee (reuse trust strip animation) */
+.partners-row__marquee {
+  flex: 1;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  min-width: 240px;
+}
+[dir="rtl"] .partners-row__track {
+  animation-direction: reverse;
+}
+.partners-row__track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  align-items: center;
+  animation: marquee 26s linear infinite;
+}
+.partners-row__track .partners-row__brand {
+  min-width: 140px;
+  min-height: 72px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-sm);
 }
 
 /* shared card surface */
@@ -1905,9 +1932,11 @@ body.is-scrolled .menu-toggle span {
    Partners & accreditations
    ========================================================================== */
 .partners-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  /* match trust-strip inner layout so marquee fills the row */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 .partners-row div {
   display: flex;
@@ -1921,8 +1950,6 @@ body.is-scrolled .menu-toggle span {
   text-align: center;
   color: var(--text-muted);
   font-weight: 700;
-  filter: grayscale(1);
-  opacity: 0.8;
   transition:
     transform var(--transition),
     box-shadow var(--transition),
@@ -1932,16 +1959,44 @@ body.is-scrolled .menu-toggle span {
     opacity var(--transition);
 }
 .partners-row div:hover {
-  transform: translateY(-4px);
-  border-color: rgba(var(--accent-rgb), 0.35);
-  color: var(--ink);
-  box-shadow: var(--shadow);
-  filter: grayscale(0);
-  opacity: 1;
+  transform: none;
+  border-color: rgba(var(--accent-rgb), 0.0);
+  color: var(--text-muted);
+  box-shadow: none;
 }
 .partners-row i {
   color: var(--accent);
   font-size: 1.2rem;
+}
+
+/* Logo cards for partners */
+.partners-row__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  min-height: 72px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition), opacity var(--transition);
+}
+.partners-row__brand img {
+  max-width: 100%;
+  max-height: 56px;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  opacity: 1;
+}
+.partners-row__brand:hover { transform: none; }
+
+@media (max-width: 900px) {
+  .partners-row__track .partners-row__brand { min-width: 160px; }
+}
+@media (max-width: 560px) {
+  .partners-row__track .partners-row__brand { min-width: 140px; }
 }
 
 /* ==========================================================================
