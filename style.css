@@ -258,7 +258,7 @@ main > section.stack-panel:first-of-type {
 .timeline .reveal:nth-child(5) {
   transition-delay: 0.3s;
 }
-.feature-grid .reveal:nth-child(6),
+.feature-grid ,
 
 /* CEO section */
 .ceo__inner {
@@ -1419,6 +1419,19 @@ body.is-scrolled .menu-toggle span {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
+}
+/* Ensure feature cards align to top and have consistent height/layout */
+.feature-grid {
+  align-items: start;
+}
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+.feature-card > * {
+  flex: 0 0 auto;
 }
 .feature-card {
   padding: 1.8rem;
