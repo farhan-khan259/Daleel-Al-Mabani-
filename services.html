@@ -316,10 +316,37 @@
         </div>
       </div>
 
+      <section class="container footer-certifications" aria-labelledby="certifications-title">
+        <div class="footer-certifications__heading">
+          <span class="eyebrow"><i class="bi bi-patch-check"></i> <span data-i18n="certifications.eyebrow">اعتمادات الشركة</span></span>
+          <h2 id="certifications-title" data-i18n="certifications.title">شهادات الشركة</h2>
+        </div>
+        <div class="footer-certifications__list">
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة شهادة استيفاء المعايير الفنية - شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.technical">شهادة استيفاء المعايير الفنية</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة شهادة ضريبة القيمة المضافة -شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.vat">شهادة ضريبة القيمة المضافة</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صوره من ترخيص الدفاع المدني - شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.civilDefense">ترخيص الدفاع المدني</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة السجل التجاري-شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.commercial">السجل التجاري</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة رخصة بلدي - شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.balady">رخصة بلدي</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة ترخيص هيئة المهندسين  -شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.engineers">ترخيص هيئة المهندسين</button>
+          <button class="certificate-button" type="button" data-certificate-src="certification company/صورة ترخيص مزاولة النشاط -شركة دليل المباني للاستشارات الهندسية.pdf" data-i18n="certifications.practice">ترخيص مزاولة النشاط</button>
+        </div>
+      </section>
+
       <div class="container footer__bottom">
         <span data-i18n="footer.rights">© 2026 دليل المباني للاستشارات الهندسية. جميع الحقوق محفوظة.</span>
       </div>
     </footer>
+
+    <div class="certificate-modal" id="certificate-modal" aria-hidden="true">
+      <div class="certificate-modal__backdrop" data-certificate-close></div>
+      <section class="certificate-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+        <div class="certificate-modal__header">
+          <h2 id="certificate-modal-title"></h2>
+          <button class="certificate-modal__close" type="button" data-certificate-close aria-label="إغلاق"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <iframe id="certificate-modal-frame" class="certificate-modal__frame" title="شهادة الشركة"></iframe>
+      </section>
+    </div>
 
     <button class="back-to-top" aria-label="العودة إلى أعلى الصفحة"><i class="bi bi-arrow-up"></i></button>
     <a href="tel:+966112345678" class="phone-float" aria-label="اتصال هاتفي"><i class="bi bi-telephone-fill"></i></a>

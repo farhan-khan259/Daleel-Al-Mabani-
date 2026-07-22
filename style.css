@@ -2656,6 +2656,155 @@ textarea {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Company certification links and PDF preview */
+.footer-certifications {
+  position: relative;
+  margin-top: 3rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-certifications__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.footer-certifications__heading .eyebrow {
+  margin: 0;
+  background: rgba(1, 178, 235, 0.12);
+  color: #8cdefe;
+  border-color: rgba(140, 222, 254, 0.3);
+}
+.footer-certifications__heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.3rem;
+}
+.footer-certifications__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.certificate-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.06);
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.certificate-button::before {
+  content: "\f1c1";
+  margin-inline-end: 0.45rem;
+  font-family: "bootstrap-icons";
+  color: var(--accent);
+}
+.certificate-button:hover,
+.certificate-button:focus-visible {
+  color: #fff;
+  background: rgba(1, 178, 235, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  outline: none;
+}
+.certificate-modal {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+.certificate-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+.certificate-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 12, 24, 0.78);
+  backdrop-filter: blur(8px);
+}
+.certificate-modal__dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(980px, 100%);
+  height: min(88vh, 860px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.certificate-modal.is-open .certificate-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+.certificate-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.75rem 1rem 0.75rem 1.3rem;
+  color: var(--ink);
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.certificate-modal__header h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+.certificate-modal__close {
+  display: grid;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.certificate-modal__close:hover,
+.certificate-modal__close:focus-visible {
+  background: var(--accent-dark);
+  transform: rotate(90deg) scale(1.08);
+  outline: none;
+}
+.certificate-modal__frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #f4f7fa;
+}
+body.certificate-modal-open { overflow: hidden; }
+
+@media (max-width: 620px) {
+  .footer-certifications__heading { align-items: flex-start; flex-direction: column; }
+  .certificate-modal { padding: 0.65rem; }
+  .certificate-modal__dialog { height: min(90vh, 780px); border-radius: 1rem; }
+  .certificate-modal__header { min-height: 56px; padding: 0.6rem 0.75rem 0.6rem 1rem; }
+}
+
 /* Footer CTA booking form styles */
 .footer-cta {
   padding: 3.2rem 0 0;

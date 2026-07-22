@@ -1610,7 +1610,16 @@ const translations = {
     'footer.linksTitle': 'روابط سريعة',
     'footer.servicesTitle': 'خدماتنا',
     'footer.contactTitle': 'تواصل',
-    'footer.rights': '© 2026 دليل المباني للاستشارات الهندسية. جميع الحقوق محفوظة.'
+    'footer.rights': '© 2026 دليل المباني للاستشارات الهندسية. جميع الحقوق محفوظة.',
+    'certifications.eyebrow': 'اعتمادات الشركة',
+    'certifications.title': 'شهادات الشركة',
+    'certifications.technical': 'شهادة استيفاء المعايير الفنية',
+    'certifications.vat': 'شهادة ضريبة القيمة المضافة',
+    'certifications.civilDefense': 'ترخيص الدفاع المدني',
+    'certifications.commercial': 'السجل التجاري',
+    'certifications.balady': 'رخصة بلدي',
+    'certifications.engineers': 'ترخيص هيئة المهندسين',
+    'certifications.practice': 'ترخيص مزاولة النشاط'
   },
 
   en: {
@@ -1873,7 +1882,16 @@ const translations = {
     'footer.linksTitle': 'Quick links',
     'footer.servicesTitle': 'Our services',
     'footer.contactTitle': 'Contact',
-    'footer.rights': '© 2026 Daleel Al-Mabani Engineering Consultancy. All rights reserved.'
+    'footer.rights': '© 2026 Daleel Al-Mabani Engineering Consultancy. All rights reserved.',
+    'certifications.eyebrow': 'Company certifications',
+    'certifications.title': 'Company Certifications',
+    'certifications.technical': 'Technical Standards Compliance Certificate',
+    'certifications.vat': 'VAT Registration Certificate',
+    'certifications.civilDefense': 'Civil Defense License',
+    'certifications.commercial': 'Commercial Registration',
+    'certifications.balady': 'Balady License',
+    'certifications.engineers': 'Saudi Council of Engineers License',
+    'certifications.practice': 'Professional Practice License'
   }
 };
 
@@ -1984,6 +2002,10 @@ async function setLanguage(lang, persist = true) {
   toggle.setAttribute('aria-label', lang === 'ar' ? 'تبديل اللغة' : 'Switch language');
   document.body.classList.toggle('lang-en', lang === 'en');
   document.body.classList.toggle('lang-ar', lang === 'ar');
+  const certificateClose = document.querySelector('.certificate-modal__close');
+  const certificateFrame = document.getElementById('certificate-modal-frame');
+  if (certificateClose) certificateClose.setAttribute('aria-label', lang === 'ar' ? 'إغلاق' : 'Close');
+  if (certificateFrame) certificateFrame.title = lang === 'ar' ? 'شهادة الشركة' : 'Company certificate';
 
   // update footer CTA/form translations (if present)
   try { applyFooterTranslations(lang); } catch (e) {}
@@ -2686,6 +2708,46 @@ function initMarquees() {
   });
 }
 
+function initCertificateModal() {
+  const modal = document.getElementById('certificate-modal');
+  const frame = document.getElementById('certificate-modal-frame');
+  const title = document.getElementById('certificate-modal-title');
+  const triggers = document.querySelectorAll('[data-certificate-src]');
+  if (!modal || !frame || !title || !triggers.length) return;
+
+  let lastTrigger = null;
+  let clearTimer = null;
+  const close = () => {
+    if (!modal.classList.contains('is-open')) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('certificate-modal-open');
+    clearTimeout(clearTimer);
+    clearTimer = setTimeout(() => { frame.src = 'about:blank'; }, 260);
+    if (lastTrigger) lastTrigger.focus();
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      lastTrigger = trigger;
+      clearTimeout(clearTimer);
+      title.textContent = trigger.textContent.trim();
+      frame.src = encodeURI(trigger.dataset.certificateSrc);
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('is-open');
+      document.body.classList.add('certificate-modal-open');
+      modal.querySelector('.certificate-modal__close').focus();
+    });
+  });
+
+  modal.querySelectorAll('[data-certificate-close]').forEach((control) => {
+    control.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') close();
+  });
+}
+
 // Auto marquee implementation (JS-driven) — robust across RTL/LTR, resizes,
 // and any number of logos. Each track scrolls forever in the direction
 // fixed by track.dataset.marqueeDir ("left" -> decreasing X, i.e. moves
@@ -2781,6 +2843,7 @@ async function init() {
   initSmoothScroll();
   initBackToTop();
   initForm();
+  initCertificateModal();
   initLanguageSwitcher();
   initImageFallbacks();
   initMapFallback();
