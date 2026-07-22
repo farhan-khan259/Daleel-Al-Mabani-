@@ -874,6 +874,7 @@ body.is-scrolled .menu-toggle span {
   color: var(--ink);
   font-weight: 800;
   letter-spacing: -0.01em;
+  white-space: pre-line;
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -1272,6 +1273,7 @@ body.is-scrolled .menu-toggle span {
 /* Clients-specific marquee with tighter spacing and smaller brand cards */
 .clients-marquee .trust-strip__track {
   gap: 2.5rem;
+      margin-top: 30px;
 }
 .clients-marquee .trust-strip__brand {
   min-width: 260px;
@@ -1290,23 +1292,6 @@ body.is-scrolled .menu-toggle span {
   display: block !important;
   filter: none !important;
 }
-
-/* Fallback: pause marquee and show logos in wrapped grid (used for RTL fixes) */
-.marquee-paused .trust-strip__track {
-  animation-play-state: paused !important;
-  transform: none !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 1rem !important;
-}
-.marquee-paused .trust-strip__brand {
-  flex: 0 0 auto !important;
-  margin: 0.5rem !important;
-  min-width: 160px !important;
-}
-.marquee-paused .trust-strip__brand img { max-height: 96px !important; }
 
 @media (max-width: 840px) {
   .clients-marquee .trust-strip__track { gap: 1rem; }
