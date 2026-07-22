@@ -1168,6 +1168,34 @@ body.is-scrolled .menu-toggle span {
   opacity: 1;
   color: var(--accent);
 }
+ .trust-strip__brand {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-width: 140px;
+   min-height: 72px;
+   padding: 0.6rem 0.8rem;
+   border-radius: 1rem;
+   background: rgba(255, 255, 255, 0.85);
+   box-shadow: var(--shadow-sm);
+   transition: transform var(--transition), filter var(--transition), opacity var(--transition);
+ }
+ .trust-strip__brand img {
+   max-width: 100%;
+   max-height: 56px;
+   object-fit: contain;
+   display: block;
+   filter: saturate(0.4);
+   opacity: 0.75;
+ }
+ .trust-strip__brand:hover {
+   transform: translateY(-3px);
+   opacity: 1;
+ }
+ .trust-strip__brand:hover img {
+   filter: saturate(1);
+   opacity: 1;
+ }
 @keyframes marquee {
   from {
     transform: translateX(0);
