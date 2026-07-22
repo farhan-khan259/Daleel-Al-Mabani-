@@ -1986,6 +1986,9 @@ async function setLanguage(lang, persist = true) {
   document.body.classList.toggle('lang-en', lang === 'en');
   document.body.classList.toggle('lang-ar', lang === 'ar');
 
+  // update footer CTA/form translations (if present)
+  try { applyFooterTranslations(lang); } catch (e) {}
+
   // re-apply the cinematic word-split after i18n rewrites the headline text
   const heroH1 = document.querySelector('.hero h1');
   if (heroH1) {
@@ -2002,6 +2005,62 @@ async function setLanguage(lang, persist = true) {
   // each other when switching between Arabic and English.
   if (typeof restartAutoMarquees === 'function') {
     try { restartAutoMarquees(48); } catch (e) {}
+  }
+}
+
+// Update footer CTA and booking form text/placeholders for EN/AR
+function applyFooterTranslations(lang) {
+  var en = {
+    title: 'Book Consultation',
+    desc: 'Get a quick consultation from our team — we will call you back during business hours.',
+    namePlaceholder: 'Full name',
+    phonePlaceholder: 'Phone number',
+    datePlaceholder: 'Date',
+    serviceDefault: 'Choose service',
+    service1: 'Engineering Consultancy for Safety',
+    service2: 'Engineering Design',
+    service4: 'Licensing & Approvals',
+    submit: 'Book Now'
+  };
+
+  var title = document.getElementById('footer-cta-title');
+  var desc = document.getElementById('footer-cta-desc');
+  var name = document.getElementById('bf-name');
+  var phone = document.getElementById('bf-phone');
+  var date = document.getElementById('bf-date');
+  var service = document.getElementById('bf-service');
+  var submit = document.getElementById('bf-submit');
+
+  if (!title || !desc || !name || !phone || !service || !submit) return;
+
+  if (lang === 'en') {
+    title.textContent = en.title;
+    desc.textContent = en.desc;
+    name.setAttribute('placeholder', en.namePlaceholder);
+    phone.setAttribute('placeholder', en.phonePlaceholder);
+    if (date) date.setAttribute('placeholder', en.datePlaceholder);
+    if (service && service.options) {
+      service.options.length = 0;
+      service.add(new Option(en.serviceDefault, ''));
+      service.add(new Option(en.service1, 's1'));
+      service.add(new Option(en.service2, 's2'));
+      service.add(new Option(en.service4, 's4'));
+    }
+    submit.textContent = en.submit;
+  } else {
+    title.textContent = 'احجز الآن';
+    desc.textContent = 'احصل على استشارة سريعة من فريقنا — سنعاود الاتصال خلال ساعات العمل.';
+    name.setAttribute('placeholder', 'الاسم');
+    phone.setAttribute('placeholder', 'رقم الهاتف');
+    if (date) date.removeAttribute('placeholder');
+    if (service && service.options) {
+      service.options.length = 0;
+      service.add(new Option('اختر الخدمة', ''));
+      service.add(new Option('الاستشارات الهندسية للسلامة', 's1'));
+      service.add(new Option('التصميم الهندسي', 's2'));
+      service.add(new Option('التراخيص والاعتمادات', 's4'));
+    }
+    submit.textContent = 'احجز الآن';
   }
 }
 

@@ -231,6 +231,40 @@
 
     <footer class="footer">
       <div class="footer__blueprint" aria-hidden="true"></div>
+
+      <div class="footer-cta">
+        <div class="container footer-cta__inner">
+          <div class="footer-cta__title">
+            <h2 id="footer-cta-title">احجز الآن</h2>
+            <p id="footer-cta-desc">احصل على استشارة سريعة من فريقنا — سنعاود الاتصال خلال ساعات العمل.</p>
+          </div>
+
+          <form class="booking-form" action="#" method="post" aria-label="نموذج الحجز السريع">
+            <label class="bf-item">
+              <span class="sr-only">الاسم</span>
+              <input id="bf-name" type="text" name="name" placeholder="الاسم" required />
+            </label>
+            <label class="bf-item">
+              <span class="sr-only">رقم الهاتف</span>
+              <input id="bf-phone" type="tel" name="phone" placeholder="رقم الهاتف" required />
+            </label>
+            <label class="bf-item">
+              <span class="sr-only">التاريخ</span>
+              <input id="bf-date" type="date" name="date" />
+            </label>
+            <label class="bf-item bf-select">
+              <select id="bf-service" name="service">
+                <option value="">اختر الخدمة</option>
+                <option value="s1">الاستشارات الهندسية للسلامة</option>
+                <option value="s2">التصميم الهندسي</option>
+                <option value="s4">التراخيص والاعتمادات</option>
+              </select>
+            </label>
+            <button class="btn btn-primary bf-submit" id="bf-submit" type="submit">احجز الآن</button>
+          </form>
+        </div>
+      </div>
+
       <div class="container footer__grid">
         <div class="footer__brand-col">
           <a href="index.html" class="brand footer-brand">
@@ -248,6 +282,7 @@
             <a href="mailto:info@darelbenaa.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
           </div>
         </div>
+
         <div>
           <h3 data-i18n="footer.linksTitle">روابط سريعة</h3>
           <ul>
@@ -257,6 +292,7 @@
             <li><a href="index.html#contact" data-i18n="nav.contact">تواصل معنا</a></li>
           </ul>
         </div>
+
         <div>
           <h3 data-i18n="footer.servicesTitle">خدماتنا</h3>
           <ul>
@@ -265,6 +301,7 @@
             <li><a href="services.html#service4" data-i18n="services.s4Title">التراخيص والاعتمادات</a></li>
           </ul>
         </div>
+
         <div>
           <h3 data-i18n="footer.contactTitle">تواصل</h3>
           <ul>
@@ -277,6 +314,7 @@
           </div>
         </div>
       </div>
+
       <div class="container footer__bottom">
         <span data-i18n="footer.rights">© 2026 دليل المباني للاستشارات الهندسية. جميع الحقوق محفوظة.</span>
       </div>
