@@ -1186,6 +1186,10 @@ body.is-scrolled .menu-toggle span {
 .trust-strip__marquee {
   flex: 1;
   overflow: hidden;
+  /* Keep the track anchored to the physical left edge. In an RTL parent a
+     max-content child otherwise starts from the right, which breaks the
+     translateX loop after a language switch. */
+  direction: ltr;
   mask-image: linear-gradient(
     90deg,
     transparent,
@@ -1206,6 +1210,9 @@ body.is-scrolled .menu-toggle span {
   display: flex;
   gap: 4rem;
   width: max-content;
+  /* The marquee geometry must stay physical LTR even when the page is Arabic.
+     This keeps repeated logo groups aligned with the translateX loop. */
+  direction: ltr;
   animation: marquee 26s linear infinite;
 }
 [dir="rtl"] .trust-strip__track {
@@ -1301,6 +1308,7 @@ body.is-scrolled .menu-toggle span {
 .partners-row__marquee {
   flex: 1;
   overflow: hidden;
+  direction: ltr;
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   min-width: 240px;
@@ -1313,6 +1321,7 @@ body.is-scrolled .menu-toggle span {
   gap: 3rem;
   width: max-content;
   align-items: center;
+  direction: ltr;
   animation: marquee 26s linear infinite;
 }
 .partners-row__track .partners-row__brand {

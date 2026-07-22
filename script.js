@@ -1950,10 +1950,9 @@ function populateClientTrack() {
   fillOne(topTrack, top);
   fillOne(bottomTrack, bottom);
 
-  // Explicit, language-independent scroll direction per row so the two
-  // rows always travel opposite ways, in both Arabic and English.
-  if (topTrack) topTrack.dataset.marqueeDir = 'right'; // top row: →
-  if (bottomTrack) bottomTrack.dataset.marqueeDir = 'left'; // bottom row: ←
+  // The direction is declared in index.html via data-marquee-dir. It is never
+  // derived from the document direction, so changing Arabic/English cannot
+  // reverse either client row.
 }
 
 function safeGetStorage(key) {
@@ -2598,11 +2597,18 @@ function initProjectCarousel() {
       where content runs out before the loop resets.
    ========================================================================== */
 
-// Rebuild a track back to its pristine single-copy state, then clone the
-// full set of children repeatedly until content is at least 2x the width
-// of one full copy. This is safe to call any number of times (idempotent).
+// Rebuild a track as repeated, complete logo groups. A group includes the
+// spacing after its final logo, which makes the distance from one copy to the
+// next exact. This is safe to call any number of times (idempotent).
 function ensureSeamlessTrack(track) {
   if (!track) return 0;
+
+  // A marquee is a geometric animation, not text. Lock both the viewport and
+  // its track to a physical LTR coordinate system so switching the document
+  // to Arabic cannot re-anchor a max-content track from the right edge.
+  const marquee = track.parentElement;
+  if (marquee) marquee.style.direction = 'ltr';
+  track.style.direction = 'ltr';
 
   // Restore to the single, original set of logos first so repeated calls
   // never compound (avoids the runaway-clone bug from the old code).
@@ -2615,20 +2621,27 @@ function ensureSeamlessTrack(track) {
   const originalChildren = Array.from(track.children);
   if (!originalChildren.length) return 0;
 
-  // Width of exactly one copy of the full logo set.
-  const originalWidth = track.scrollWidth || 1;
+  const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0') || 0;
+  const originalGroup = document.createElement('div');
+  originalGroup.className = 'marquee__group';
+  originalGroup.style.cssText = `display:flex; flex:0 0 auto; gap:${gap}px;`;
+  originalChildren.forEach((node) => originalGroup.appendChild(node));
+  track.appendChild(originalGroup);
 
-  // Keep appending full passes of the original set (not just one node at
-  // a time) until we have at least 2 complete copies. Using full passes
-  // guarantees the boundary between "copy 1" and "copy 2" is exact, which
-  // is what makes the modulo-based loop below seamless.
+  // The direct children are groups, so the track gap is also the gap at the
+  // copy boundary. This is the true repeat distance, including that boundary.
+  const cycleWidth = originalGroup.scrollWidth + gap;
+  if (!cycleWidth) return 0;
+
+  const requiredWidth = cycleWidth + (marquee ? marquee.clientWidth : 0);
   let guard = 0;
-  while (track.scrollWidth < originalWidth * 2 && guard < 20) {
-    originalChildren.forEach((node) => track.appendChild(node.cloneNode(true)));
+  while (track.scrollWidth < requiredWidth && guard < 20) {
+    track.appendChild(originalGroup.cloneNode(true));
     guard += 1;
   }
 
-  return originalWidth;
+  track._marqueeCycleWidth = cycleWidth;
+  return cycleWidth;
 }
 
 function initMarquees() {
@@ -2708,15 +2721,13 @@ function startAutoMarquees(speedPxPerSec = 48) {
         return;
       }
 
-      // Recompute cycle width defensively in case content/layout shifted
-      // (e.g. late-loading logo images changing intrinsic size).
-      const liveWidth = track.scrollWidth / 2; // we always keep >=2 copies
-      if (liveWidth > 0) cycleWidth = liveWidth;
-
       const move = (speedPxPerSec * dt) / 1000;
       offset = (offset + move) % cycleWidth;
 
-      const translate = dir * offset;
+      // Left-moving rows use the first copy followed by the next one. For a
+      // right-moving row, start at the preceding copy instead, so its left
+      // edge is always occupied and never reveals a blank gap.
+      const translate = dir < 0 ? -offset : -cycleWidth + offset;
       track.style.transform = `translate3d(${translate.toFixed(3)}px, 0, 0)`;
 
       track._marquee.raf = requestAnimationFrame(step);
