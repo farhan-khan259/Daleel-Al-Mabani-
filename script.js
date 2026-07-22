@@ -603,7 +603,28 @@ function setLanguage(lang, persist = true) {
     /* ignore in non-browser env */
   }
   // re-run marquee fill after language swap (layout may have changed)
-  try { if (typeof window.fillMarquees === 'function') window.fillMarquees(); } catch (e) {}
+  try {
+    // defensive: ensure tracks keep a copy of their original HTML
+    document.querySelectorAll('.trust-strip__track, .partners-row__track').forEach(t => {
+      if (!t.dataset.originalHtml) t.dataset.originalHtml = t.innerHTML;
+    });
+
+    // force-reload client images and make them visible
+    const clientImgs = document.querySelectorAll('.clients-marquee img');
+    clientImgs.forEach((img) => {
+      try {
+        const srcAttr = img.getAttribute('src') || img.src;
+        img.style.display = 'block'; img.style.visibility = 'visible'; img.style.opacity = '1'; img.style.filter = 'none';
+        // reassign src to force reload
+        if (srcAttr) img.src = srcAttr;
+      } catch (e) {}
+    });
+
+    // slight delay to allow layout changes, then refill tracks
+    setTimeout(() => { try { if (typeof window.fillMarquees === 'function') window.fillMarquees(); } catch (e) {} }, 80);
+    // pause marquee and show wrapped grid in Arabic to avoid disappearing logos
+    document.body.classList.toggle('marquee-paused', lang === 'ar');
+  } catch (e) {}
 
 function initStickyHeader() {
   const onScroll = () => {
@@ -1149,6 +1170,7 @@ function init() {
 function initMarquees() {
   const fillTracks = () => {
     const tracks = document.querySelectorAll('.trust-strip__track, .partners-row__track');
+    console.log('[marquee] fillTracks() running, tracks=', tracks.length);
     tracks.forEach((track) => {
       const marquee = track.parentElement; // .trust-strip__marquee
       if (!marquee) return;
@@ -1174,6 +1196,8 @@ function initMarquees() {
         try { console.debug('[marquee] children after=', track.children.length, 'scrollWidth=', track.scrollWidth); } catch (e) {}
       };
 
+      console.log('[marquee] track children before restore=', track.children.length, 'imgs=', imgs.length);
+
       if (imgs.length === 0 || checkLoaded()) {
         doFill();
       } else {
@@ -1191,6 +1215,12 @@ function initMarquees() {
         // fallback timeout
         setTimeout(() => { if (!settled) { settled = true; doFill(); } }, 1600);
       }
+      // log images dimensions after fill
+      setTimeout(() => {
+        const postImgs = track.querySelectorAll('img');
+        console.log('[marquee] post-fill children=', track.children.length, 'postImgs=', postImgs.length);
+        postImgs.forEach((im, idx) => { if (idx < 6) console.log(`[marquee] img[${idx}] src=${im.getAttribute('src')} naturalWidth=${im.naturalWidth} naturalHeight=${im.naturalHeight}`); });
+      }, 250);
     });
   };
 
@@ -1204,5 +1234,71 @@ function initMarquees() {
     resizeTimer = setTimeout(fillTracks, 300);
   });
 }
+
+// Auto marquee implementation (JS-driven) — more robust across RTL/LTR and layout changes
+function startAutoMarquees(speedPxPerSec = 60) {
+  const tracks = document.querySelectorAll('.trust-strip__track, .partners-row__track');
+  tracks.forEach((track) => {
+    // stop if already running
+    if (track._marquee && track._marquee.raf) return;
+    const marquee = track.parentElement;
+    if (!marquee) return;
+    // ensure enough content
+    if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
+    // compute sizes
+    const isRtl = getComputedStyle(track).direction === 'rtl';
+    const originalWidth = track.scrollWidth;
+    // ensure at least 2x width
+    const ensureDup = () => {
+      const containerWidth = marquee.offsetWidth || marquee.clientWidth || window.innerWidth;
+      const origChildren = Array.from(track.children);
+      let attempts = 0;
+      while (track.scrollWidth < containerWidth * 2 && attempts < 200) {
+        const node = origChildren[attempts % origChildren.length];
+        if (!node) break;
+        track.appendChild(node.cloneNode(true));
+        attempts++;
+      }
+    };
+    ensureDup();
+    // disable CSS animation to avoid conflicts with JS-driven transform
+    track.style.animation = 'none';
+
+    let last = performance.now();
+    let offset = 0;
+    const dir = isRtl ? 1 : -1; // translateX positive moves right
+
+    function step(now) {
+      const dt = now - last;
+      last = now;
+      if (document.hidden || document.body.classList.contains('marquee-paused')) {
+        track.style.transform = '';
+        track._marquee.raf = requestAnimationFrame(step);
+        return;
+      }
+      const move = (speedPxPerSec * dt / 1000);
+      offset = (offset + move) % (track.scrollWidth / 2);
+      const translate = dir * offset * 1; // px
+      track.style.transform = `translateX(${translate}px)`;
+      track._marquee.raf = requestAnimationFrame(step);
+    }
+
+    track._marquee = { raf: requestAnimationFrame(step), stop: () => { if (track._marquee && track._marquee.raf) cancelAnimationFrame(track._marquee.raf); track._marquee = null; } };
+  });
+}
+
+function stopAutoMarquees() {
+  document.querySelectorAll('.trust-strip__track, .partners-row__track').forEach(track => {
+    if (track._marquee && track._marquee.raf) cancelAnimationFrame(track._marquee.raf);
+    track._marquee = null;
+    track.style.transform = '';
+    // restore CSS animation back to stylesheet value
+    track.style.animation = '';
+  });
+}
+
+// start marquees after DOM load
+window.addEventListener('load', () => { try { startAutoMarquees(48); } catch (e) {} });
+window.addEventListener('resize', () => { try { stopAutoMarquees(); startAutoMarquees(48); } catch (e) {} });
 
 init();

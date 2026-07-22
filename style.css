@@ -1291,6 +1291,23 @@ body.is-scrolled .menu-toggle span {
   filter: none !important;
 }
 
+/* Fallback: pause marquee and show logos in wrapped grid (used for RTL fixes) */
+.marquee-paused .trust-strip__track {
+  animation-play-state: paused !important;
+  transform: none !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+}
+.marquee-paused .trust-strip__brand {
+  flex: 0 0 auto !important;
+  margin: 0.5rem !important;
+  min-width: 160px !important;
+}
+.marquee-paused .trust-strip__brand img { max-height: 96px !important; }
+
 @media (max-width: 840px) {
   .clients-marquee .trust-strip__track { gap: 1rem; }
   .clients-marquee .trust-strip__brand { min-width: 180px; min-height: 100px; padding: 0.6rem; }
