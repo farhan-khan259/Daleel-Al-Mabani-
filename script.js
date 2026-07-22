@@ -1347,6 +1347,8 @@
 
 
 
+
+
 const translations = {
   ar: {
     brandName: 'دليل المباني',
@@ -1906,26 +1908,52 @@ const clientLogoFiles = [
   '1.jpg','10.jpg','11.jpg','12.jpg','2.jpg','23.png.png','2323.png','32.png.png','34.png.jpg','4.jpg','6.jpg','7.jpg','8.jpg','9.jpg','Ministry-of-Labor-and-Social-Development.png','QKbsa-6g_400x400.jpg','Riyadh_Metro_Logo.png.png','SGS_LOGO_2.png','Screenshot_1.jpg','Screenshot_10.jpg','Screenshot_11.jpg','Screenshot_12.jpg','Screenshot_13.jpg','Screenshot_2.jpg','Screenshot_3.jpg','Screenshot_4.jpg','Screenshot_5.jpg','Screenshot_6.jpg','Screenshot_7.jpg','Screenshot_8.jpg','Screenshot_9.jpg','Untitled.png','fda936a68b90-61731.jpg','fe9fe7b2-6395-4bdf-b223-4ce1f044955a_16x9_1200x676.jpg','images.png','tas_helat_logo.jpg'
 ];
 
+/**
+ * Split the master logo list roughly in half so the TOP track and the
+ * BOTTOM track show different (but overlapping-free) sets of logos,
+ * matching what the reference screenshots show (two independent rows).
+ * Both halves are still "the full client roster" — nothing is dropped —
+ * they're just distributed between the two rows.
+ */
+function splitLogoFiles(files) {
+  const mid = Math.ceil(files.length / 2);
+  return {
+    top: files.slice(0, mid),
+    bottom: files.slice(mid).length ? files.slice(mid) : files.slice(0, mid),
+  };
+}
+
 function populateClientTrack() {
-  const tracks = [
-    document.getElementById('clients-track-top'),
-    document.getElementById('clients-track-bottom'),
-  ].filter(Boolean);
-  tracks.forEach((track) => {
+  const topTrack = document.getElementById('clients-track-top');
+  const bottomTrack = document.getElementById('clients-track-bottom');
+  const { top, bottom } = splitLogoFiles(clientLogoFiles);
+
+  const fillOne = (track, list) => {
+    if (!track) return;
     const folder = track.getAttribute('data-client-folder') || ' Our logo clinets/';
     track.innerHTML = '';
-    clientLogoFiles.forEach((fn) => {
+    list.forEach((fn) => {
       const wrap = document.createElement('div');
       wrap.className = 'trust-strip__brand';
       const img = document.createElement('img');
       img.src = encodeURI(folder + fn);
       img.alt = fn;
+      img.loading = 'lazy';
       wrap.appendChild(img);
       track.appendChild(wrap);
     });
-    if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
-  });
-  // Do NOT start/stop marquees here – this is handled centrally in setLanguage.
+    // Store the pristine, single-copy markup so we can always rebuild
+    // cleanly from scratch (prevents runaway duplication on repeated calls).
+    track.dataset.originalHtml = track.innerHTML;
+  };
+
+  fillOne(topTrack, top);
+  fillOne(bottomTrack, bottom);
+
+  // Explicit, language-independent scroll direction per row so the two
+  // rows always travel opposite ways, in both Arabic and English.
+  if (topTrack) topTrack.dataset.marqueeDir = 'right'; // top row: →
+  if (bottomTrack) bottomTrack.dataset.marqueeDir = 'left'; // bottom row: ←
 }
 
 function safeGetStorage(key) {
@@ -1969,6 +1997,9 @@ async function setLanguage(lang, persist = true) {
 
   // Restart marquee motion after RTL/LTR layout changes so the track offset
   // and cycle width are recalculated correctly for the current language.
+  // Direction is driven by data-marquee-dir (set once in populateClientTrack),
+  // NOT by document direction, so top/bottom rows never flip relative to
+  // each other when switching between Arabic and English.
   if (typeof restartAutoMarquees === 'function') {
     try { restartAutoMarquees(48); } catch (e) {}
   }
@@ -2488,138 +2519,178 @@ function initProjectCarousel() {
   update();
 }
 
+/* ==========================================================================
+   MARQUEE SYSTEM (rewritten)
+   --------------------------------------------------------------------------
+   Goals:
+   1. Every marquee track (.trust-strip__track / .partners-row__track,
+      including the two client rows) must be duplicated until it holds
+      AT LEAST 2 full, identical, back-to-back copies of its logo set.
+      This guarantees a perfectly seamless loop no matter how many logos
+      exist (30+ is fine) or how wide the viewport/container is.
+   2. Each track scrolls forever in ONE fixed direction, driven by
+      data-marqueeDir ("left" | "right"), which is set once when the
+      track is populated and NEVER changes with language direction.
+      This is what keeps the top row and bottom row moving in opposite,
+      unchanging directions in both Arabic (RTL) and English (LTR).
+   3. The animation is driven by requestAnimationFrame with a translateX
+      offset that wraps using modulo against the width of ONE copy of
+      the (now-duplicated) content — so there is never a "gap" moment
+      where content runs out before the loop resets.
+   ========================================================================== */
+
+// Rebuild a track back to its pristine single-copy state, then clone the
+// full set of children repeatedly until content is at least 2x the width
+// of one full copy. This is safe to call any number of times (idempotent).
+function ensureSeamlessTrack(track) {
+  if (!track) return 0;
+
+  // Restore to the single, original set of logos first so repeated calls
+  // never compound (avoids the runaway-clone bug from the old code).
+  if (track.dataset.originalHtml === undefined) {
+    track.dataset.originalHtml = track.innerHTML;
+  } else {
+    track.innerHTML = track.dataset.originalHtml;
+  }
+
+  const originalChildren = Array.from(track.children);
+  if (!originalChildren.length) return 0;
+
+  // Width of exactly one copy of the full logo set.
+  const originalWidth = track.scrollWidth || 1;
+
+  // Keep appending full passes of the original set (not just one node at
+  // a time) until we have at least 2 complete copies. Using full passes
+  // guarantees the boundary between "copy 1" and "copy 2" is exact, which
+  // is what makes the modulo-based loop below seamless.
+  let guard = 0;
+  while (track.scrollWidth < originalWidth * 2 && guard < 20) {
+    originalChildren.forEach((node) => track.appendChild(node.cloneNode(true)));
+    guard += 1;
+  }
+
+  return originalWidth;
+}
+
 function initMarquees() {
   const fillTracks = () => {
     const tracks = document.querySelectorAll('.trust-strip__track, .partners-row__track');
-    console.log('[marquee] fillTracks() running, tracks=', tracks.length);
-    tracks.forEach((track) => {
-      const marquee = track.parentElement; // .trust-strip__marquee
-      if (!marquee) return;
-      // restore original track content (idempotent fill) to avoid exponential cloning
-      if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
-      else track.innerHTML = track.dataset.originalHtml;
-
-      const imgs = track.querySelectorAll('img');
-      const checkLoaded = () => Array.from(imgs).every(i => i.complete && (i.naturalWidth || i.naturalHeight));
-
-      const doFill = () => {
-        const containerWidth = marquee.offsetWidth || marquee.clientWidth || window.innerWidth;
-        const originalChildren = Array.from(track.children);
-        const originalWidth = track.scrollWidth;
-        try { console.debug('[marquee] filling track for marquee width', containerWidth, 'originalWidth=', originalWidth, 'children before=', track.children.length); } catch (e) {}
-        // duplicate original children until the track contains at least two full copies of its original content
-        let attempts = 0;
-        while (track.scrollWidth < originalWidth * 2 && attempts < 200) {
-          const node = originalChildren[attempts % originalChildren.length];
-          if (!node) break;
-          track.appendChild(node.cloneNode(true));
-          attempts++;
-        }
-        try { console.debug('[marquee] children after=', track.children.length, 'scrollWidth=', track.scrollWidth); } catch (e) {}
-      };
-
-      console.log('[marquee] track children before restore=', track.children.length, 'imgs=', imgs.length);
-
-      if (imgs.length === 0 || checkLoaded()) {
-        doFill();
-      } else {
-        // wait for images (or errors) then fill
-        let settled = false;
-        const onImg = () => {
-          if (settled) return;
-          if (checkLoaded()) {
-            settled = true;
-            doFill();
-            imgs.forEach(i => { i.removeEventListener('load', onImg); i.removeEventListener('error', onImg); });
-          }
-        };
-        imgs.forEach(i => { i.addEventListener('load', onImg); i.addEventListener('error', onImg); });
-        // fallback timeout
-        setTimeout(() => { if (!settled) { settled = true; doFill(); } }, 1600);
-      }
-      // log images dimensions after fill
-      setTimeout(() => {
-        const postImgs = track.querySelectorAll('img');
-        console.log('[marquee] post-fill children=', track.children.length, 'postImgs=', postImgs.length);
-        postImgs.forEach((im, idx) => { if (idx < 6) console.log(`[marquee] img[${idx}] src=${im.getAttribute('src')} naturalWidth=${im.naturalWidth} naturalHeight=${im.naturalHeight}`); });
-      }, 250);
-    });
+    tracks.forEach((track) => ensureSeamlessTrack(track));
   };
 
   // expose for other code (e.g. after i18n swaps) so we can re-fill tracks
   try { window.fillMarquees = fillTracks; } catch (e) {}
 
-  window.addEventListener('load', fillTracks);
-  if (document.readyState === 'complete') fillTracks();
+  const runWhenImagesSettle = () => {
+    const imgs = document.querySelectorAll('.trust-strip__track img, .partners-row__track img');
+    if (!imgs.length) { fillTracks(); return; }
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      fillTracks();
+    };
+    const allDone = () => Array.from(imgs).every((i) => i.complete);
+    if (allDone()) { finish(); return; }
+    imgs.forEach((img) => {
+      img.addEventListener('load', () => { if (allDone()) finish(); });
+      img.addEventListener('error', () => { if (allDone()) finish(); });
+    });
+    // Safety net in case some images never fire load/error promptly.
+    setTimeout(finish, 1600);
+  };
+
+  window.addEventListener('load', runWhenImagesSettle);
+  if (document.readyState === 'complete') runWhenImagesSettle();
+
   let resizeTimer = null;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(fillTracks, 300);
+    // On resize, re-run the full fill+restart so cycle widths recompute
+    // and rows stay seamless at the new container width.
+    resizeTimer = setTimeout(() => {
+      try { restartAutoMarquees(48); } catch (e) { fillTracks(); }
+    }, 300);
   });
 }
 
-// Auto marquee implementation (JS-driven) — more robust across RTL/LTR and layout changes
-function startAutoMarquees(speedPxPerSec = 60) {
+// Auto marquee implementation (JS-driven) — robust across RTL/LTR, resizes,
+// and any number of logos. Each track scrolls forever in the direction
+// fixed by track.dataset.marqueeDir ("left" -> decreasing X, i.e. moves
+// visually to the start; "right" -> increasing X, moves visually to the
+// end). This direction is independent of document dir / language.
+function startAutoMarquees(speedPxPerSec = 48) {
   const tracks = document.querySelectorAll('.trust-strip__track, .partners-row__track');
   tracks.forEach((track) => {
+    // Already running — leave it alone.
     if (track._marquee && track._marquee.raf) return;
+
     const marquee = track.parentElement;
     if (!marquee) return;
-    if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
-    else track.innerHTML = track.dataset.originalHtml;
 
-    const ensureDup = () => {
-      const originalChildren = Array.from(track.children);
-      const originalWidth = track.scrollWidth;
-      let attempts = 0;
-      while (track.scrollWidth < originalWidth * 2 && attempts < 200) {
-        const node = originalChildren[attempts % originalChildren.length];
-        if (!node) break;
-        track.appendChild(node.cloneNode(true));
-        attempts++;
-      }
-      return originalWidth;
-    };
-    const originalWidth = ensureDup();
+    const originalWidth = ensureSeamlessTrack(track);
+    if (!originalWidth) return;
+
     track.style.animation = 'none';
     track.style.willChange = 'transform';
-    track.style.transform = 'translate3d(0,0,0)';
+
+    const dir = track.dataset.marqueeDir === 'left' ? -1 : 1;
 
     let last = performance.now();
     let offset = 0;
-    const requestedDir = track.dataset.marqueeDir;
-    const dir = requestedDir === 'left' ? -1 : 1;
-    let cycleWidth = Math.max(originalWidth, 1);
+    let cycleWidth = originalWidth;
 
     function step(now) {
       const dt = now - last;
       last = now;
+
       if (document.hidden) {
         track._marquee.raf = requestAnimationFrame(step);
         return;
       }
-      const currentCycle = Math.max(originalWidth, 1);
-      if (currentCycle !== cycleWidth) cycleWidth = currentCycle;
-      const move = (speedPxPerSec * dt / 1000);
+
+      // Recompute cycle width defensively in case content/layout shifted
+      // (e.g. late-loading logo images changing intrinsic size).
+      const liveWidth = track.scrollWidth / 2; // we always keep >=2 copies
+      if (liveWidth > 0) cycleWidth = liveWidth;
+
+      const move = (speedPxPerSec * dt) / 1000;
       offset = (offset + move) % cycleWidth;
+
       const translate = dir * offset;
       track.style.transform = `translate3d(${translate.toFixed(3)}px, 0, 0)`;
+
       track._marquee.raf = requestAnimationFrame(step);
     }
 
-    track._marquee = { raf: requestAnimationFrame(step), stop: () => { if (track._marquee && track._marquee.raf) cancelAnimationFrame(track._marquee.raf); track._marquee = null; } };
+    track._marquee = {
+      raf: requestAnimationFrame(step),
+      stop() {
+        if (this.raf) cancelAnimationFrame(this.raf);
+        track._marquee = null;
+      },
+    };
   });
 }
 
 function stopAutoMarquees() {
-  document.querySelectorAll('.trust-strip__track, .partners-row__track').forEach(track => {
+  document.querySelectorAll('.trust-strip__track, .partners-row__track').forEach((track) => {
     if (track._marquee && track._marquee.raf) cancelAnimationFrame(track._marquee.raf);
     track._marquee = null;
     track.style.transform = '';
-    // restore CSS animation back to stylesheet value
     track.style.animation = '';
   });
 }
+
+// Convenience helper used after language switches / resizes: stop, rebuild
+// each track from its pristine single copy, then start again. This is what
+// keeps both rows perfectly in sync and gap-free after a layout change.
+function restartAutoMarquees(speedPxPerSec = 48) {
+  stopAutoMarquees();
+  startAutoMarquees(speedPxPerSec);
+}
+
+try { window.restartAutoMarquees = restartAutoMarquees; } catch (e) {}
 
 // --- UPDATED init (async) ---
 async function init() {
@@ -2652,13 +2723,13 @@ async function init() {
   initProjectCarousel();
   initSectionStack();
 
-
-  // start marquees after DOM load (only if not already started)
+  // Start marquees once the page has fully loaded (images sized correctly),
+  // and again on resize so both rows keep looping seamlessly forever.
   window.addEventListener('load', () => { try { startAutoMarquees(48); } catch (e) {} });
   if (document.readyState === 'complete') {
     try { startAutoMarquees(48); } catch (e) {}
   }
-  window.addEventListener('resize', () => { try { stopAutoMarquees(); startAutoMarquees(48); } catch (e) {} });
+  window.addEventListener('resize', () => { try { restartAutoMarquees(48); } catch (e) {} });
 }
 
 // Execute
