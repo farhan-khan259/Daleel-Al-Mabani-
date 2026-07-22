@@ -27,6 +27,8 @@ const translations = {
     'hero.scrollHint': 'مرر للاستكشاف',
 
     'trust.label': 'موثوق من قبل جهات ومطورين رائدين',
+    'clients.eyebrow': 'عملاؤنا',
+    'clients.title': 'جهات ومؤسسات وثيقة التعاون',
 
     'about.eyebrow': 'من نحن',
     'about.title': 'شريكك الهندسي لتحقيق مشاريع أكثر أماناً وكفاءة.',
@@ -288,6 +290,8 @@ const translations = {
     'hero.scrollHint': 'Scroll to explore',
 
     'trust.label': 'Trusted by leading authorities and developers',
+    'clients.eyebrow': 'Our clients',
+    'clients.title': 'Organizations and institutions we cooperate with',
 
     'about.eyebrow': 'About us',
     'about.title': 'Your engineering partner for safer and more efficient projects.',
@@ -586,6 +590,20 @@ function setLanguage(lang, persist = true) {
 
   if (persist) safeSetStorage('dam-lang', lang);
 }
+  // Debug: when switching languages, log client logo status to help diagnose disappearance
+  try {
+    const clientImgs = document.querySelectorAll('.clients-marquee img');
+    if (clientImgs && clientImgs.length) {
+      console.debug('[i18n] setLanguage ->', lang, 'clients images:', clientImgs.length);
+      clientImgs.forEach((img, i) => {
+        console.debug(`[i18n] img[${i}] src=",${img.getAttribute('src')}", complete=`, img.complete, ', naturalWidth=', img.naturalWidth || 0);
+      });
+    }
+  } catch (e) {
+    /* ignore in non-browser env */
+  }
+  // re-run marquee fill after language swap (layout may have changed)
+  try { if (typeof window.fillMarquees === 'function') window.fillMarquees(); } catch (e) {}
 
 function initStickyHeader() {
   const onScroll = () => {
@@ -1134,36 +1152,50 @@ function initMarquees() {
     tracks.forEach((track) => {
       const marquee = track.parentElement; // .trust-strip__marquee
       if (!marquee) return;
-      // ensure images loaded first
+      // restore original track content (idempotent fill) to avoid exponential cloning
+      if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
+      else track.innerHTML = track.dataset.originalHtml;
+
       const imgs = track.querySelectorAll('img');
-      const checkLoaded = () => Array.from(imgs).every(i => i.complete);
+      const checkLoaded = () => Array.from(imgs).every(i => i.complete && (i.naturalWidth || i.naturalHeight));
+
       const doFill = () => {
         const containerWidth = marquee.offsetWidth || marquee.clientWidth || window.innerWidth;
-        // duplicate children until the track is at least twice the container width
+        try { console.debug('[marquee] filling track for marquee width', containerWidth, 'children before=', track.children.length); } catch (e) {}
+        // duplicate original children until track is at least twice the container width
+        const originalChildren = Array.from(track.children);
         let attempts = 0;
-        while (track.scrollWidth < containerWidth * 2 && attempts < 100) {
-          const node = track.children[attempts % track.children.length];
+        while (track.scrollWidth < containerWidth * 2 && attempts < 200) {
+          const node = originalChildren[attempts % originalChildren.length];
           if (!node) break;
           track.appendChild(node.cloneNode(true));
           attempts++;
         }
+        try { console.debug('[marquee] children after=', track.children.length, 'scrollWidth=', track.scrollWidth); } catch (e) {}
       };
+
       if (imgs.length === 0 || checkLoaded()) {
         doFill();
       } else {
-        // wait for images to load
+        // wait for images (or errors) then fill
+        let settled = false;
         const onImg = () => {
+          if (settled) return;
           if (checkLoaded()) {
+            settled = true;
             doFill();
-            imgs.forEach(i => i.removeEventListener('load', onImg));
+            imgs.forEach(i => { i.removeEventListener('load', onImg); i.removeEventListener('error', onImg); });
           }
         };
-        imgs.forEach(i => i.addEventListener('load', onImg));
+        imgs.forEach(i => { i.addEventListener('load', onImg); i.addEventListener('error', onImg); });
         // fallback timeout
-        setTimeout(() => { if (!checkLoaded()) doFill(); }, 1500);
+        setTimeout(() => { if (!settled) { settled = true; doFill(); } }, 1600);
       }
     });
   };
+
+  // expose for other code (e.g. after i18n swaps) so we can re-fill tracks
+  try { window.fillMarquees = fillTracks; } catch (e) {}
 
   window.addEventListener('load', fillTracks);
   let resizeTimer = null;

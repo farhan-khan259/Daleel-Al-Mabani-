@@ -1269,6 +1269,34 @@ body.is-scrolled .menu-toggle span {
   .trust-strip__brand img { max-height: 64px; }
 }
 
+/* Clients-specific marquee with tighter spacing and smaller brand cards */
+.clients-marquee .trust-strip__track {
+  gap: 2.5rem;
+}
+.clients-marquee .trust-strip__brand {
+  min-width: 260px;
+  min-height: 140px;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.98);
+}
+.clients-marquee .trust-strip__brand img {
+  max-height: 120px;
+}
+
+/* Force client logos visible after language switch (defensive) */
+.clients-marquee .trust-strip__brand img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  filter: none !important;
+}
+
+@media (max-width: 840px) {
+  .clients-marquee .trust-strip__track { gap: 1rem; }
+  .clients-marquee .trust-strip__brand { min-width: 180px; min-height: 100px; padding: 0.6rem; }
+  .clients-marquee .trust-strip__brand img { max-height: 72px; }
+}
+
 /* Partners marquee (reuse trust strip animation) */
 .partners-row__marquee {
   flex: 1;
