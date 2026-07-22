@@ -522,6 +522,17 @@ const translations = {
   }
 };
 
+// CEO translations
+translations.ar['ceo.heading'] = 'كلمة المدير التنفيذي';
+translations.ar['ceo.text'] = 'في دليل المباني للاستشارات الهندسية نلتزم بتقديم حلول واستشارات هندسية احترافية تدعم مستهدفات رؤية المملكة 2030، من خلال الجودة، والابتكار، والالتزام بأعلى المعايير الهندسية. نسعى إلى بناء مشاريع أكثر كفاءة واستدامة، وأن نكون شريكًا موثوقًا في نجاح عملائنا.';
+translations.ar['ceo.name'] = 'محمد بن أحمد القحطاني';
+translations.ar['ceo.title'] = 'المدير التنفيذي';
+
+translations.en['ceo.heading'] = "Message from the CEO";
+translations.en['ceo.text'] = "At Daleel Al-Mabani Engineering Consultancy we are committed to delivering professional engineering solutions and consultancy that support the Kingdom's Vision 2030 goals through quality, innovation, and adherence to the highest engineering standards. We strive to build more efficient and sustainable projects and to be a trusted partner in our clients' success.";
+translations.en['ceo.name'] = 'Mohammed bin Ahmed Al-Qahtani';
+translations.en['ceo.title'] = 'Chief Executive Officer';
+
 const state = { currentLang: 'ar' };
 
 const doc = document.documentElement;
