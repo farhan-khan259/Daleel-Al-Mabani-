@@ -1094,6 +1094,52 @@ function init() {
   initHeroSlider();
   initProjectCarousel();
   initSectionStack();
+  initMarquees();
+}
+
+function initMarquees() {
+  const fillTracks = () => {
+    const tracks = document.querySelectorAll('.trust-strip__track, .partners-row__track');
+    tracks.forEach((track) => {
+      const marquee = track.parentElement; // .trust-strip__marquee
+      if (!marquee) return;
+      // ensure images loaded first
+      const imgs = track.querySelectorAll('img');
+      const checkLoaded = () => Array.from(imgs).every(i => i.complete);
+      const doFill = () => {
+        const containerWidth = marquee.offsetWidth || marquee.clientWidth || window.innerWidth;
+        // duplicate children until the track is at least twice the container width
+        let attempts = 0;
+        while (track.scrollWidth < containerWidth * 2 && attempts < 100) {
+          const node = track.children[attempts % track.children.length];
+          if (!node) break;
+          track.appendChild(node.cloneNode(true));
+          attempts++;
+        }
+      };
+      if (imgs.length === 0 || checkLoaded()) {
+        doFill();
+      } else {
+        // wait for images to load
+        const onImg = () => {
+          if (checkLoaded()) {
+            doFill();
+            imgs.forEach(i => i.removeEventListener('load', onImg));
+          }
+        };
+        imgs.forEach(i => i.addEventListener('load', onImg));
+        // fallback timeout
+        setTimeout(() => { if (!checkLoaded()) doFill(); }, 1500);
+      }
+    });
+  };
+
+  window.addEventListener('load', fillTracks);
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fillTracks, 300);
+  });
 }
 
 init();
