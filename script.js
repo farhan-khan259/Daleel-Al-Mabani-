@@ -504,7 +504,6 @@ const faqItems = document.querySelectorAll('.faq-item');
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 const testimonialDotsWrap = document.querySelector('.testimonial-dots');
 const serviceSheets = document.querySelectorAll('.service-sheet[data-sheet]');
-const navDropdown = document.querySelector('.nav-dropdown');
 
 function safeGetStorage(key) {
   try { return window.localStorage.getItem(key); } catch (e) { return null; }
@@ -579,15 +578,6 @@ function initMobileMenu() {
     });
   });
 
-  if (navDropdown) {
-    const dropdownLink = navDropdown.querySelector('a');
-    dropdownLink.addEventListener('click', (e) => {
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        navDropdown.classList.toggle('is-open');
-      }
-    });
-  }
 }
 
 function initReveal() {
@@ -662,20 +652,16 @@ function initServiceSheets() {
     });
   });
 
-  // nav dropdown quick links open the relevant sheet
-  document.querySelectorAll('.nav-dropdown__panel a[data-service]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const id = link.getAttribute('data-service');
-      const sheet = document.querySelector(`.service-sheet[data-sheet="${id}"]`);
-      if (!sheet) return;
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    const sheet = document.querySelector(`.service-sheet[data-sheet="${hash.replace('service', '')}"]`);
+    if (sheet && !sheet.classList.contains('is-open')) {
       setTimeout(() => {
-        if (!sheet.classList.contains('is-open')) {
-          sheet.querySelector('.service-sheet__toggle').click();
-        }
+        sheet.querySelector('.service-sheet__toggle').click();
         sheet.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 350);
-    });
-  });
+      }, 300);
+    }
+  }
 }
 
 function initTestimonials() {
@@ -868,14 +854,6 @@ function initLanguageSwitcher() {
   toggle.addEventListener('click', () => {
     const nextLang = state.currentLang === 'ar' ? 'en' : 'ar';
     setLanguage(nextLang);
-  });
-}
-
-function initOutsideClickForDropdown() {
-  document.addEventListener('click', (e) => {
-    if (navDropdown && !navDropdown.contains(e.target) && window.innerWidth > 900) {
-      navDropdown.classList.remove('is-open');
-    }
   });
 }
 
@@ -1097,7 +1075,6 @@ function init() {
   initImageFallbacks();
   initMapFallback();
   initHeroTilt();
-  initOutsideClickForDropdown();
   initHeroSplit();
   initMagnetic();
   initParallax();
