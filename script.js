@@ -552,6 +552,33 @@ const testimonialCards = document.querySelectorAll('.testimonial-card');
 const testimonialDotsWrap = document.querySelector('.testimonial-dots');
 const serviceSheets = document.querySelectorAll('.service-sheet[data-sheet]');
 
+// List of client logo files (auto-generated from workspace directory)
+const clientLogoFiles = [
+  '1.jpg','10.jpg','11.jpg','12.jpg','2.jpg','23.png.png','2323.png','32.png.png','34.png.jpg','4.jpg','6.jpg','7.jpg','8.jpg','9.jpg','Ministry-of-Labor-and-Social-Development.png','QKbsa-6g_400x400.jpg','Riyadh_Metro_Logo.png.png','SGS_LOGO_2.png','Screenshot_1.jpg','Screenshot_10.jpg','Screenshot_11.jpg','Screenshot_12.jpg','Screenshot_13.jpg','Screenshot_2.jpg','Screenshot_3.jpg','Screenshot_4.jpg','Screenshot_5.jpg','Screenshot_6.jpg','Screenshot_7.jpg','Screenshot_8.jpg','Screenshot_9.jpg','Untitled.png','fda936a68b90-61731.jpg','fe9fe7b2-6395-4bdf-b223-4ce1f044955a_16x9_1200x676.jpg','images.png','tas_helat_logo.jpg'
+];
+
+function populateClientTrack() {
+  const track = document.getElementById('clients-track');
+  if (!track) return;
+  const folder = track.getAttribute('data-client-folder') || ' Our logo clinets/';
+  track.innerHTML = '';
+  clientLogoFiles.forEach((fn) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'trust-strip__brand';
+    const img = document.createElement('img');
+    // encode the path to handle spaces
+    img.src = encodeURI(folder + fn);
+    img.alt = fn;
+    wrap.appendChild(img);
+    track.appendChild(wrap);
+  });
+  // keep original snapshot for idempotent fills
+  if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
+  // refresh marquees
+  try { if (typeof window.fillMarquees === 'function') window.fillMarquees(); } catch (e) {}
+  try { stopAutoMarquees(); startAutoMarquees(48); } catch (e) {}
+}
+
 function safeGetStorage(key) {
   try { return window.localStorage.getItem(key); } catch (e) { return null; }
 }
@@ -1164,6 +1191,8 @@ function init() {
   initHeroSlider();
   initProjectCarousel();
   initSectionStack();
+  // populate clients first, then init marquees
+  populateClientTrack();
   initMarquees();
 }
 

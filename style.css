@@ -590,7 +590,7 @@ body.is-scrolled .header__inner {
 }
 .brand strong {
   display: block;
-  color: #fff;
+  color: #01b2eb;
   font-size: 1.05rem;
   transition: color var(--transition);
 }
