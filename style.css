@@ -1205,7 +1205,7 @@ body.is-scrolled .menu-toggle span {
 }
 .trust-strip__track {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
   width: max-content;
   animation: marquee 26s linear infinite;
 }
@@ -1226,26 +1226,26 @@ body.is-scrolled .menu-toggle span {
   opacity: 1;
   color: var(--accent);
 }
- .trust-strip__brand {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   min-width: 140px;
-   min-height: 72px;
-   padding: 0.6rem 0.8rem;
-   border-radius: 1rem;
-   background: rgba(255, 255, 255, 0.85);
-   box-shadow: var(--shadow-sm);
-   transition: transform var(--transition), filter var(--transition), opacity var(--transition);
- }
- .trust-strip__brand img {
-   max-width: 100%;
-   max-height: 56px;
-   object-fit: contain;
-   display: block;
+.trust-strip__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 110px;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), filter var(--transition), opacity var(--transition);
+}
+.trust-strip__brand img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  display: block;
   filter: none;
   opacity: 1;
- }
+}
  .trust-strip__brand:hover {
   transform: none;
   opacity: 1;
@@ -1261,6 +1261,12 @@ body.is-scrolled .menu-toggle span {
   to {
     transform: translateX(-50%);
   }
+}
+
+@media (max-width: 840px) {
+  .trust-strip__track { gap: 1.25rem; }
+  .trust-strip__brand { min-width: 160px; min-height: 86px; padding: 0.6rem; }
+  .trust-strip__brand img { max-height: 64px; }
 }
 
 /* Partners marquee (reuse trust strip animation) */
