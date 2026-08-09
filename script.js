@@ -255,7 +255,7 @@
 
 //     'map.viewBtn': 'عرض الخريطة',
 
-//     'footer.text': 'شريكك الهندسي في المشاريع المعقدة، من الفكرة إلى الاعتماد والنجاح.',
+//     'footer.text': 'دليل المباني للاستشارات الهندسية هو مكتب استشاري متخصص في تقديم الحلول الهندسية المتكاملة، من خلال خدمات التصميم والمراجعة والإشراف والاستشارات الفنية، مع الالتزام بأعلى معايير الجودة والسلامة والأنظمة المعتمدة من الدفاع المدني، لضمان تنفيذ مشاريع مستدامة ',
 //     'footer.linksTitle': 'روابط سريعة',
 //     'footer.servicesTitle': 'خدماتنا',
 //     'footer.contactTitle': 'تواصل',
@@ -468,7 +468,7 @@
 //     'faq.title': 'Practical information to help you make the right decision.',
 //     'faq.text': 'We provide clear answers about our services, workflow, and the expected time for each phase.',
 //     'faq.moreQuestions': 'Have another question? Get in touch',
-//     'faq.q1': 'What sets Daleel Al-Mabani Engineering Consultancy apart?',
+//     'faq.q1': 'What sets Building Guide Engineering Consultant apart?',
 //     'faq.a1': "Daleel Al-Mabani is a specialized consultancy providing integrated engineering solutions in safety and fire prevention, engineering design, licensing, and project supervision. We deliver professional services in accordance with the Saudi Building Code and engineering best practices, supporting the Kingdom's Vision 2030 goals.",
 //     'faq.q2': 'What services does Daleel Al-Mabani offer?',
 //     'faq.a2': 'We provide engineering consultancy, design of safety and fire prevention systems, technical reporting, issuance and renewal of permits, and supervision of execution and handover, as well as architectural and structural design and engineering transaction services.',
@@ -522,7 +522,7 @@
 //     'footer.linksTitle': 'Quick links',
 //     'footer.servicesTitle': 'Our services',
 //     'footer.contactTitle': 'Contact',
-//     'footer.rights': '© 2026 Daleel Al-Mabani Engineering Consultancy. All rights reserved.'
+//     'footer.rights': '© 2026 Building Guide Engineering Consultant. All rights reserved.'
 //   }
 // };
 
@@ -533,7 +533,7 @@
 // translations.ar['ceo.title'] = 'المدير التنفيذي';
 
 // translations.en['ceo.heading'] = "Message from the CEO";
-// translations.en['ceo.text'] = "At Daleel Al-Mabani Engineering Consultancy we are committed to delivering professional engineering solutions and consultancy that support the Kingdom's Vision 2030 goals through quality, innovation, and adherence to the highest engineering standards. We strive to build more efficient and sustainable projects and to be a trusted partner in our clients' success.";
+// translations.en['ceo.text'] = "At Building Guide Engineering Consultant we are committed to delivering professional engineering solutions and consultancy that support the Kingdom's Vision 2030 goals through quality, innovation, and adherence to the highest engineering standards. We strive to build more efficient and sustainable projects and to be a trusted partner in our clients' success.";
 // translations.en['ceo.name'] = 'Mohammed bin Ahmed Al-Qahtani';
 // translations.en['ceo.title'] = 'Chief Executive Officer';
 
@@ -1606,7 +1606,7 @@ const translations = {
 
     'map.viewBtn': 'عرض الخريطة',
 
-    'footer.text': 'شريكك الهندسي في المشاريع المعقدة، من الفكرة إلى الاعتماد والنجاح.',
+    'footer.text': 'دليل المباني للاستشارات الهندسية هو مكتب استشاري متخصص في تقديم الحلول الهندسية المتكاملة، من خلال خدمات التصميم والمراجعة والإشراف والاستشارات الفنية، مع الالتزام بأعلى معايير الجودة والسلامة والأنظمة المعتمدة من الدفاع المدني، لضمان تنفيذ مشاريع مستدامة ',
     'footer.linksTitle': 'روابط سريعة',
     'footer.servicesTitle': 'خدماتنا',
     'footer.contactTitle': 'تواصل',
@@ -1623,8 +1623,8 @@ const translations = {
   },
 
   en: {
-    brandName: 'Daleel Al-Mabani',
-    brandTag: 'Engineering Consultancy',
+    brandName: 'Building Guide',
+    brandTag: 'Engineering Consultant',
     'topbar.location': 'Riyadh, Saudi Arabia',
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -1828,7 +1828,7 @@ const translations = {
     'faq.title': 'Practical information to help you make the right decision.',
     'faq.text': 'We provide clear answers about our services, workflow, and the expected time for each phase.',
     'faq.moreQuestions': 'Have another question? Get in touch',
-    'faq.q1': 'What sets Daleel Al-Mabani Engineering Consultancy apart?',
+    'faq.q1': 'What sets Building Guide Engineering Consultant apart?',
     'faq.a1': "Daleel Al-Mabani is a specialized consultancy providing integrated engineering solutions in safety and fire prevention, engineering design, licensing, and project supervision. We deliver professional services in accordance with the Saudi Building Code and engineering best practices, supporting the Kingdom's Vision 2030 goals.",
     'faq.q2': 'What services does Daleel Al-Mabani offer?',
     'faq.a2': 'We provide engineering consultancy, design of safety and fire prevention systems, technical reporting, issuance and renewal of permits, and supervision of execution and handover, as well as architectural and structural design and engineering transaction services.',
@@ -1882,7 +1882,7 @@ const translations = {
     'footer.linksTitle': 'Quick links',
     'footer.servicesTitle': 'Our services',
     'footer.contactTitle': 'Contact',
-    'footer.rights': '© 2026 Daleel Al-Mabani Engineering Consultancy. All rights reserved.',
+    'footer.rights': '© 2026 Building Guide Engineering Consultant. All rights reserved.',
     'certifications.eyebrow': 'Company certifications',
     'certifications.title': 'Company Certifications',
     'certifications.technical': 'Technical Standards Compliance Certificate',
@@ -1902,7 +1902,7 @@ translations.ar['ceo.name'] = 'محمد بن أحمد القحطاني';
 translations.ar['ceo.title'] = 'المدير التنفيذي';
 
 translations.en['ceo.heading'] = "Message from the CEO";
-translations.en['ceo.text'] = "At Daleel Al-Mabani Engineering Consultancy we are committed to delivering professional engineering solutions and consultancy that support the Kingdom's Vision 2030 goals through quality, innovation, and adherence to the highest engineering standards. We strive to build more efficient and sustainable projects and to be a trusted partner in our clients' success.";
+translations.en['ceo.text'] = "At Building Guide Engineering Consultant we are committed to delivering professional engineering solutions and consultancy that support the Kingdom's Vision 2030 goals through quality, innovation, and adherence to the highest engineering standards. We strive to build more efficient and sustainable projects and to be a trusted partner in our clients' success.";
 translations.en['ceo.name'] = 'Mohammed bin Ahmed Al-Qahtani';
 translations.en['ceo.title'] = 'Chief Executive Officer';
 
