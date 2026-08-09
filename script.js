@@ -26,7 +26,7 @@
 //     'hero.statLabel2': 'مشروع منجز',
 //     'hero.scrollHint': 'مرر للاستكشاف',
 
-//     'trust.label': 'موثوق من قبل جهات ومطورين رائدين',
+//     'trust.label': 'موثوق من قبل جهات رائدة',
 //     'clients.eyebrow': 'عملاؤنا',
 //     'clients.title': 'جهات ومؤسسات\nنتعاون معها',
 
@@ -289,7 +289,7 @@
 //     'hero.statLabel2': 'Projects delivered',
 //     'hero.scrollHint': 'Scroll to explore',
 
-//     'trust.label': 'Trusted by leading authorities and developers',
+//     'trust.label': 'Trusted by leading authorities ',
 //     'clients.eyebrow': 'Our clients',
 //     'clients.title': 'Organizations and institutions we cooperate with',
 
@@ -1377,7 +1377,7 @@ const translations = {
     'hero.statLabel2': 'مشروع منجز',
     'hero.scrollHint': 'مرر للاستكشاف',
 
-    'trust.label': 'موثوق من قبل جهات ومطورين رائدين',
+    'trust.label': 'موثوق من قبل جهات رائدة',
     'clients.eyebrow': 'عملاؤنا',
     'clients.title': 'جهات ومؤسسات\nنتعاون معها',
 
@@ -1576,10 +1576,10 @@ const translations = {
     'partners.eyebrow': 'الشركاء والاعتمادات',
     'partners.title': 'نعمل وفق أعلى المعايير مع جهات موثوقة وشركاء نجاح.',
 
-    'cta.eyebrow': 'ابدأ مشروعك',
-    'cta.title': 'دعنا نبدأ مشروعك… مع خبرة هندسية مضمونة.',
-    'cta.text': 'سواء كنت في البداية أو تبحث عن حل لمشكلة فنية معقدة، فنحن جاهزون لتقديم الخبرة اللازمة من أول دراسة حتى الاعتماد النهائي.',
-    'cta.primaryBtn': 'اطلب استشارة الآن',
+    'cta.eyebrow': 'تواصل معنا',
+    'cta.title': 'هل لديك مشروع يحتاج إلى حل هندسي متخصص؟',
+    'cta.text': 'شاركنا تفاصيل مشروعك، ودع فريقنا يساعدك في دراسة التحديات وتطوير الحلول الهندسية المناسبة.',
+    'cta.primaryBtn': 'اطلب استشارة',
     'cta.secondaryBtn': 'تواصل عبر واتساب',
 
     'contact.eyebrow': 'تواصل معنا',
@@ -1649,7 +1649,7 @@ const translations = {
     'hero.statLabel2': 'Projects delivered',
     'hero.scrollHint': 'Scroll to explore',
 
-    'trust.label': 'Trusted by leading authorities and developers',
+    'trust.label': 'Trusted by leading authorities ',
     'clients.eyebrow': 'Our clients',
     'clients.title': 'Organizations and institutions we cooperate with',
 
@@ -1848,10 +1848,10 @@ const translations = {
     'partners.eyebrow': 'Partners & accreditations',
     'partners.title': 'We operate under the highest standards alongside trusted partners and authorities.',
 
-    'cta.eyebrow': 'Start your project',
-    'cta.title': 'Let\u2019s begin your project with guaranteed engineering expertise.',
-    'cta.text': 'Whether you are at the beginning or facing a complex technical challenge, we are ready to provide the expertise needed from the first study through final approval.',
-    'cta.primaryBtn': 'Request consultation',
+    'cta.eyebrow': 'Contact Us',
+    'cta.title': 'Do you have a project that needs a specialized engineering solution?',
+    'cta.text': 'Share your project details, and let our team help you assess the challenges and develop the right engineering solutions.',
+    'cta.primaryBtn': 'Request a Consultation',
     'cta.secondaryBtn': 'Contact via WhatsApp',
 
     'contact.eyebrow': 'Contact us',
