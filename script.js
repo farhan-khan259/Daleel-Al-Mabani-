@@ -1364,7 +1364,8 @@ const translations = {
     'nav.cta': 'اطلب استشارة',
 
     'hero.eyebrow': 'استشارات هندسية معتمدة',
-    'hero.title': 'نصمم الحلول التي يراها الآخرون مستحيلة.',
+    'hero.title.part1': 'نصمم الحلول التي يراها الآخرون ',
+    'hero.title.part2': 'مستحيلة',
     'hero.description': 'في دليل المباني نساعد المطورين والمستثمرين والجهات الحكومية على تحويل التحديات الهندسية إلى حلول عملية ومعتمدة، وفق أعلى المعايير السعودية.',
     'hero.primaryBtn': 'احصل على استشارة',
     'hero.secondaryBtn': 'استكشف خدماتنا',
@@ -1382,7 +1383,7 @@ const translations = {
     'clients.title': 'نفتخر بشراكاتنا',
 
     'about.eyebrow': 'من نحن',
-    'about.title': 'شريكك الهندسي لتحقيق مشاريع أكثر أماناً وكفاءة.',
+    'about.title': 'شريكك الهندسي لتحقيق مشاريع أكثر أماناً وكفاءة',
     'about.p1': 'نحن مكتب هندسي متخصص في تقديم الاستشارات الهندسية للسلامة، التصميم المعماري والإنشائي، والتراخيص والاعتمادات وفق أعلى المعايير والمواصفات.',
     'about.p2': 'يمتد عملنا من التحليل الأولي إلى الإشراف على التنفيذ والتصديق النهائي، مع تركيزنا على الجودة والابتكار والالتزام باللوائح السعودية.',
     'about.pillar1Title': 'حلول مبتكرة',
@@ -1391,7 +1392,7 @@ const translations = {
     'about.pillar2Text': 'أكثر من 15 مهندساً واستشارياً في مختلف التخصصات.',
 
     'features.eyebrow': 'لماذا يختارنا العملاء؟',
-    'features.title': 'لأننا لا نقدم استشارات فقط… بل نقدم حلولاً هندسية تصنع الفارق.',
+    'features.title': 'لأننا لا نقدم استشارات فقط… بل نقدم حلولاً هندسية تصنع الفارق',
     'features.item1Title': 'مشاريع معقدة',
     'features.item1Text': 'عند تعقيد الحلول، نرتقي بها إلى معادلة عملية وآمنة.',
     'features.item2Title': 'حلول مبتكرة',
@@ -1408,14 +1409,14 @@ const translations = {
     'features.item7Text': 'نرافق المشروع من الإشراف الأولي إلى شهادة الاستلام النهائية.',
 
     'services.eyebrow': 'خدماتنا',
-    'services.title': 'حلول شاملة لأي مشروع يحتاج إلى دقة واحترافية.',
+    'services.title': 'حلول شاملة لأي مشروع يحتاج إلى دقة واحترافية',
     'services.detailsToggle': 'تفاصيل الخدمة',
     'services.needHelpTitle': 'تحتاج استشارة سريعة؟',
     'services.needHelpText': 'تواصل مع فريقنا الفني وسنعاود الاتصال بك خلال ساعات العمل.',
     'services.needHelpBtn': 'تواصل الآن',
     'services.heroTitleBefore': 'حلول هندسية شاملة لدعم مشاريعك من البداية حتى ',
     'services.heroTitleHighlight': 'التسليم',
-    'services.heroTitleAfter': '.',
+    'services.heroTitleAfter': '',
     'services.description': 'نقدم باقة متكاملة من الخدمات الهندسية: استشارات السلامة، تصميم متكامل، تقارير فنية، تراخيص واعتمادات، وإشراف استلام ميداني.',
     'services.browseBtn': 'تصفح الخدمات',
     'services.contactBtn': 'تواصل معنا',
@@ -1471,7 +1472,7 @@ const translations = {
     'services.s5List5': 'إعداد تقارير الاستلام النهائي',
 
     'industries.eyebrow': 'القطاعات التي نخدمها',
-    'industries.title': 'خبرات متنوعة في مختلف القطاعات.',
+    'industries.title': 'خبرات متنوعة في مختلف القطاعات',
     industry1: 'المشاريع السكنية',
     industry2: 'الأبراج',
     industry3: 'المجمعات التجارية',
@@ -1485,7 +1486,7 @@ const translations = {
     industry11: 'المشاريع متعددة الاستخدام',
 
     'process.eyebrow': 'منهجية العمل',
-    'process.title': 'خطة عملنا من الفكرة حتى الاعتماد والتسليم.',
+    'process.title': 'خطة عملنا من الفكرة حتى الاعتماد والتسليم',
     'process.step1Title': 'تحليل المتطلبات',
     'process.step1Text': 'فهم احتياجات العميل والمشروع قبل وضع أي حل.',
     'process.step2Title': 'دراسة التحديات الفنية',
@@ -1508,7 +1509,7 @@ const translations = {
     'stats.satisfaction': 'نسبة الرضا',
 
     'projects.eyebrow': 'مشاريعنا المميزة',
-    'projects.title': 'مجموعة من الأعمال التي تعكس خبرتنا واحترافيتنا.',
+    'projects.title': 'مجموعة من الأعمال التي تعكس خبرتنا واحترافيتنا',
     'projects.p1Title': 'مجمع سكني فاخر',
     'projects.p1Text': 'تصميم سلامة وإشراف على الاعتمادات.',
     'projects.p1Tag': 'سكني',
@@ -1529,7 +1530,7 @@ const translations = {
     'projects.p6Tag': 'فندقي',
 
     'approach.eyebrow': 'أسلوبنا في العمل',
-    'approach.title': 'نحب إيجاد الحلول للتحديات المعقدة.',
+    'approach.title': 'نحب إيجاد الحلول للتحديات المعقدة',
     'approach.s1Title': 'الدراسة والتحليل',
     'approach.s1Text': 'نبدأ بفهم عميق لاحتياجات المشروع ودراسة الموقع والاشتراطات قبل اقتراح أي حل هندسي.',
     'approach.s1Tag': 'تحليل المتطلبات',
@@ -1544,7 +1545,7 @@ const translations = {
     'approach.s4Tag': 'حتى التسليم',
 
     'testimonials.eyebrow': 'آراء العملاء',
-    'testimonials.title': 'ثقة العملاء هي أفضل شهادة على الالتزام والجودة.',
+    'testimonials.title': 'ثقة العملاء هي أفضل شهادة على الالتزام والجودة',
     'testimonials.t1': '"التزامهم الدقيق بالمعايير وقدرتهم على تسريع اجراءات الاعتماد كان السبب الرئيسي لنجاح مشروعنا."',
     'testimonials.t1Role': 'مدير مشاريع',
     'testimonials.t2': '"الفريق قدم لنا حلولاً عملية ومهنية من أول يوم، وحقق التوازن بين الإبداع والالتزام."',
@@ -1574,7 +1575,7 @@ const translations = {
     'faq.a8': 'يمكنكم التواصل مع فريق دليل المباني للاستشارات الهندسية لمناقشة احتياجات مشروعكم، حيث نقوم بدراسة المتطلبات وتقديم الحلول والاستشارات المناسبة، مع متابعة جميع مراحل المشروع حتى إنجازه وفق أعلى المعايير.',
 
     'partners.eyebrow': 'الشركاء والاعتمادات',
-    'partners.title': 'نعمل وفق أعلى المعايير مع جهات موثوقة وشركاء نجاح.',
+    'partners.title': 'نعمل وفق أعلى المعايير مع جهات موثوقة وشركاء نجاح',
 
     'cta.eyebrow': 'تواصل معنا',
     'cta.title': 'هل لديك مشروع يحتاج إلى حل هندسي متخصص؟',
@@ -1583,7 +1584,7 @@ const translations = {
     'cta.secondaryBtn': 'تواصل عبر واتساب',
 
     'contact.eyebrow': 'تواصل معنا',
-    'contact.title': 'نحن مستعدون لمساعدتك في كل مرحلة.',
+    'contact.title': 'نحن مستعدون لمساعدتك في كل مرحلة',
     'contact.text': 'أرسل لنا بيانات مشروعك وسنعود إليك فوراً مع خطة أولية مناسبة.',
     'contact.locationText': 'الرياض – السعودية',
     'contact.whatsappBtn': 'واتساب فوري',
@@ -1636,7 +1637,8 @@ const translations = {
     'nav.cta': 'Book Consultation',
 
     'hero.eyebrow': 'Certified Engineering Consultation',
-    'hero.title': 'We design solutions others see as impossible.',
+    'hero.title.part1': 'We design solutions others see as ',
+    'hero.title.part2': 'impossible',
     'hero.description': 'At Daleel Al-Mabani we help developers, investors, and public entities turn engineering challenges into practical and approved solutions, following the highest Saudi standards.',
     'hero.primaryBtn': 'Get a Consultation',
     'hero.secondaryBtn': 'Explore Services',
@@ -1654,7 +1656,7 @@ const translations = {
     'clients.title': 'Organizations and institutions we cooperate with',
 
     'about.eyebrow': 'About us',
-    'about.title': 'Your engineering partner for safer and more efficient projects.',
+    'about.title': 'Your engineering partner for safer and more efficient projects',
     'about.p1': 'We are an engineering office specialized in safety consultation, architectural and structural design, and licensing and approvals in line with the highest standards and specifications.',
     'about.p2': 'Our work extends from initial analysis to supervising execution and final certification, with a focus on quality, innovation, and compliance with Saudi regulations.',
     'about.pillar1Title': 'Innovative solutions',
@@ -1663,7 +1665,7 @@ const translations = {
     'about.pillar2Text': 'More than 15 engineers and consultants across multiple disciplines.',
 
     'features.eyebrow': 'Why clients choose us',
-    'features.title': 'Because we do more than advise—we deliver engineering solutions that make a difference.',
+    'features.title': 'Because we do more than advise—we deliver engineering solutions that make a difference',
     'features.item1Title': 'Complex projects',
     'features.item1Text': 'When solutions become complicated, we raise them to a practical and safe level.',
     'features.item2Title': 'Innovative solutions',
@@ -1680,14 +1682,14 @@ const translations = {
     'features.item7Text': 'We accompany the project from initial supervision through the final handover certificate.',
 
     'services.eyebrow': 'Our services',
-    'services.title': 'Comprehensive solutions for any project that needs precision and professionalism.',
+    'services.title': 'Comprehensive solutions for any project that needs precision and professionalism',
     'services.detailsToggle': 'Service details',
     'services.needHelpTitle': 'Need a quick consultation?',
     'services.needHelpText': 'Reach out to our technical team and we will call you back during business hours.',
     'services.needHelpBtn': 'Contact us now',
     'services.heroTitleBefore': 'Complete engineering solutions for your projects from start to ',
     'services.heroTitleHighlight': 'handover',
-    'services.heroTitleAfter': '.',
+    'services.heroTitleAfter': '',
     'services.description': 'We offer a complete package of engineering services: safety consulting, integrated design, technical reports, licenses and approvals, and field handover supervision.',
     'services.browseBtn': 'Browse services',
     'services.contactBtn': 'Contact us',
@@ -1743,7 +1745,7 @@ const translations = {
     'services.s5List5': 'Preparing final handover reports',
 
     'industries.eyebrow': 'Sectors we serve',
-    'industries.title': 'Diverse experience across a wide range of sectors.',
+    'industries.title': 'Diverse experience across a wide range of sectors',
     industry1: 'Residential projects',
     industry2: 'High-rises',
     industry3: 'Commercial complexes',
@@ -1757,7 +1759,7 @@ const translations = {
     industry11: 'Mixed-use developments',
 
     'process.eyebrow': 'Our methodology',
-    'process.title': 'Our workflow from concept to approval and delivery.',
+    'process.title': 'Our workflow from concept to approval and delivery',
     'process.step1Title': 'Requirements analysis',
     'process.step1Text': 'Understanding the client and project needs before proposing any solution.',
     'process.step2Title': 'Technical challenge review',
@@ -1780,7 +1782,7 @@ const translations = {
     'stats.satisfaction': 'Satisfaction rate',
 
     'projects.eyebrow': 'Featured projects',
-    'projects.title': 'A curated portfolio of our work and capabilities.',
+    'projects.title': 'A curated portfolio of our work and capabilities',
     'projects.p1Title': 'Luxury residential complex',
     'projects.p1Text': 'Safety design and approval oversight.',
     'projects.p1Tag': 'Residential',
@@ -1801,7 +1803,7 @@ const translations = {
     'projects.p6Tag': 'Hospitality',
 
     'approach.eyebrow': 'How we work',
-    'approach.title': 'We love solving complex challenges.',
+    'approach.title': 'We love solving complex challenges',
     'approach.s1Title': 'Study & analysis',
     'approach.s1Text': 'We start with a deep understanding of the project needs, site, and requirements before proposing any solution.',
     'approach.s1Tag': 'Requirements analysis',
@@ -1816,7 +1818,7 @@ const translations = {
     'approach.s4Tag': 'Through handover',
 
     'testimonials.eyebrow': 'Client feedback',
-    'testimonials.title': 'Client trust is the strongest evidence of quality and commitment.',
+    'testimonials.title': 'Client trust is the strongest evidence of quality and commitment',
     'testimonials.t1': '"Their precise compliance and ability to accelerate approval procedures were the main reasons for our project\u2019s success."',
     'testimonials.t1Role': 'Project director',
     'testimonials.t2': '"The team delivered practical and professional solutions from day one while maintaining balance between creativity and compliance."',
@@ -1846,7 +1848,7 @@ const translations = {
     'faq.a8': 'You can contact the Daleel Al-Mabani team to discuss your project needs. We will study the requirements and provide suitable solutions and consultancy, following all project stages until completion to the highest standards.',
 
     'partners.eyebrow': 'Partners & accreditations',
-    'partners.title': 'We operate under the highest standards alongside trusted partners and authorities.',
+    'partners.title': 'We operate under the highest standards alongside trusted partners and authorities',
 
     'cta.eyebrow': 'Contact Us',
     'cta.title': 'Do you have a project that needs a specialized engineering solution?',
@@ -1855,7 +1857,7 @@ const translations = {
     'cta.secondaryBtn': 'Contact via WhatsApp',
 
     'contact.eyebrow': 'Contact us',
-    'contact.title': 'We are ready to support you at every stage.',
+    'contact.title': 'We are ready to support you at every stage',
     'contact.text': 'Send us your project details and we will get back to you quickly with an initial plan.',
     'contact.locationText': 'Riyadh, Saudi Arabia',
     'contact.whatsappBtn': 'Chat on WhatsApp',
