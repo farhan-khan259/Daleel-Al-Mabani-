@@ -1553,8 +1553,8 @@ const translations = {
     'testimonials.t3Role': 'مالك مشروع',
 
     'faq.eyebrow': 'الأسئلة الشائعة',
-    'faq.title': 'معلومات عملية تساعدك على اتخاذ القرار المناسب.',
-    'faq.text': 'نقدم لك إجابات واضحة حول خدماتنا، آلية العمل، والوقت المتوقع لكل مرحلة.',
+    'faq.title': 'كل ما تحتاج معرفته قبل بدء مشروعك',
+    'faq.text': '',
     'faq.moreQuestions': 'لديك سؤال آخر؟ تواصل معنا',
     'faq.q1': 'ما الذي يميز دليل المباني للاستشارات الهندسية؟',
     'faq.a1': 'تعد دليل المباني للاستشارات الهندسية مكتبًا استشاريًا متخصصًا في تقديم حلول هندسية متكاملة في مجالات السلامة والوقاية من الحريق، والتصميم الهندسي، والتراخيص، والإشراف على المشاريع. نلتزم بتقديم خدمات احترافية وفق الكود السعودي وأفضل الممارسات الهندسية، بما يدعم مستهدفات رؤية المملكة 2030.',
@@ -1825,8 +1825,8 @@ const translations = {
     'testimonials.t3Role': 'Project owner',
 
     'faq.eyebrow': 'Frequently asked questions',
-    'faq.title': 'Practical information to help you make the right decision.',
-    'faq.text': 'We provide clear answers about our services, workflow, and the expected time for each phase.',
+    'faq.title': 'Everything you need to know before starting your project',
+    'faq.text': '',
     'faq.moreQuestions': 'Have another question? Get in touch',
     'faq.q1': 'What sets Building Guide Engineering Consultant apart?',
     'faq.a1': "Daleel Al-Mabani is a specialized consultancy providing integrated engineering solutions in safety and fire prevention, engineering design, licensing, and project supervision. We deliver professional services in accordance with the Saudi Building Code and engineering best practices, supporting the Kingdom's Vision 2030 goals.",
