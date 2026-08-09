@@ -1378,8 +1378,8 @@ const translations = {
     'hero.scrollHint': 'مرر للاستكشاف',
 
     'trust.label': 'موثوق من قبل جهات رائدة',
-    'clients.eyebrow': 'عملاؤنا',
-    'clients.title': 'جهات ومؤسسات\nنتعاون معها',
+    'clients.eyebrow': 'شركاء النجاح',
+    'clients.title': 'نفتخر بشراكاتنا',
 
     'about.eyebrow': 'من نحن',
     'about.title': 'شريكك الهندسي لتحقيق مشاريع أكثر أماناً وكفاءة.',
@@ -1649,8 +1649,8 @@ const translations = {
     'hero.statLabel2': 'Projects delivered',
     'hero.scrollHint': 'Scroll to explore',
 
-    'trust.label': 'Trusted by leading authorities ',
-    'clients.eyebrow': 'Our clients',
+    'trust.label': 'Trusted by leading authorities',
+    'clients.eyebrow': 'Success partners',
     'clients.title': 'Organizations and institutions we cooperate with',
 
     'about.eyebrow': 'About us',
