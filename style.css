@@ -2245,6 +2245,20 @@ body.is-scrolled .menu-toggle span {
   gap: 2.5rem;
   align-items: start;
 }
+.faq__content {
+  text-align: left;
+}
+.faq__list {
+  text-align: left;
+}
+html[dir="rtl"] .faq__content {
+  order: 2;
+  text-align: right;
+}
+html[dir="rtl"] .faq__list {
+  order: 1;
+  text-align: right;
+}
 .faq__content .btn {
   margin-top: 1.2rem;
 }
